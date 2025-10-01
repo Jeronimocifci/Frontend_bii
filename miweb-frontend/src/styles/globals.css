@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --brand-default: #1B5E20;
+  --brand-light: #66BB6A;
+  --highlight-yellow: #FDD835;
+  --highlight-orange: #FF9800;
+  --neutral-white: #FFFFFF;
+  --neutral-dark: #212121;
+}
+
 body {
   font-family: sans-serif;
+}
+
+/* Clases personalizadas para colores */
+.text-brand-light {
+  color: var(--brand-light);
+}
+
+.text-brand-default {
+  color: var(--brand-default);
+}
+
+.text-neutral-dark {
+  color: var(--neutral-dark);
+}
+
+.hover\:text-brand-light:hover {
+  color: var(--brand-light);
 }

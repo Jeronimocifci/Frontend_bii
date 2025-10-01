@@ -1,12 +1,16 @@
+import React from "react";
+
+// src/app/page.tsx
+
 export default function NosotrosPage() {
   return (
-    <section className="py-12">
-      <h1 className="text-3xl font-bold text-brand mb-6">Sobre Nosotros</h1>
-      <p className="text-neutral-dark">
-        En Bii Jugos creemos en la frescura, la naturaleza y el bienestar.  
-        Producimos jugos 100% naturales, sin conservantes, para que disfrutes 
-        lo mejor de la fruta en cada botella.
-      </p>
-    </section>
+    <main className="min-h-screen flex flex-col items-center justify-center bg-white">
+      <h1 className="text-brand-light text-4xl mb-4">
+        Hola verde claro
+      </h1>
+      <div className="text-brand-light text-3xl font-bold">
+        Esto debería ser verde claro
+      </div>
+    </main>
   );
 }

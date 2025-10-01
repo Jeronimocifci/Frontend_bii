@@ -1,30 +1,28 @@
-// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/app/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
         brand: {
-          DEFAULT: "#1B5E20", // Verde Oscuro
-          light: "#66BB6A",   // Verde Claro
+          DEFAULT: "#1B5E20",
+          light: "#66BB6A",
         },
         highlight: {
-          yellow: "#FDD835", // Amarillo Cítrico
-          orange: "#FF9800", // Naranja Fruta
+          yellow: "#FDD835",
+          orange: "#FF9800",
         },
         neutral: {
-          white: "#FFFFFF",  // Blanco Puro
-          dark: "#212121",   // Negro Suave
+          white: "#FFFFFF",
+          dark: "#212121",
         },
-      },
-      fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"], // <- usamos la fuente de next/font
       },
     },
   },
   plugins: [],
-};
+}
 

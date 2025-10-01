@@ -1,13 +1,20 @@
+"use client";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Logo() {
-	return (
-		<Link href="/" className="flex items-center gap-2 text-white font-semibold text-xl">
-			<span className="inline-grid place-items-center w-8 h-8 rounded-full bg-white/20">
-				<span className="text-emerald-900">B</span>
-			</span>
-			<span>bii Jugos</span>
-		</Link>
-	);
+  return (
+    <Link href="/" className="flex items-center gap-2">
+      <Image
+        src="/logo_bii.png" // 👈 como está en /public, se accede con esta ruta
+        alt="Logo Bii"
+        width={110} // ajusta tamaño
+        height={110}
+        priority
+      />
+    </Link>
+  );
 }
+
+
 
