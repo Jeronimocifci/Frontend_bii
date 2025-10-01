@@ -15,9 +15,7 @@ const ContactoPage: React.FC = () => {
 
   // URL de la imagen de fondo (reemplazada por una URL temática de jugos)
   const backgroundImageUrl = 'https://placehold.co/1200x500/007bff/ffffff/png?text=Fondo+Azul+Bii+Jugos';
-  // URL de la imagen de la botella superpuesta (simulando el diseño)
-  const bottleImageUrl = 'https://th.bing.com/th/id/OIP.zkVogKMeoQq-JgY6NJU6qgHaHa?w=197&h=197&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3'; 
-  
+
   // Datos de Contacto de Bii Jugos
   const contactInfo = [
     { label: 'Dirección', value: 'Mercasa P1 y P2, Pereira', icon: MapPin, type: 'text' as const },
@@ -108,17 +106,6 @@ const ContactoPage: React.FC = () => {
             </div>
 
           </div>
-          
-          {/* Botella de Jugo Simulado (centrada abajo, parcialmente visible) */}
-          {/* Esta simulación de la botella permanece en la parte inferior */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mt-12 hidden lg:block">
-             <img 
-               src={bottleImageUrl} 
-               alt="Botella de Jugo Bii" 
-               className="h-[400px] object-contain opacity-80"
-             />
-          </div>
-
         </div>
       </div>
     </div>
