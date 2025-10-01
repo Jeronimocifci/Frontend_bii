@@ -1,16 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 // Importamos los datos. Manteniendo la ruta ajustada que funcionó.
 import { MOCK_PRODUCTS, ProductInfo } from '../../../dataProducts'; 
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     id: string; // El ID del producto viene de la URL (e.g., /productos/1)
-  };
+  }>;
 }
 
 const ProductDetailPage: React.FC<ProductPageProps> = async ({ params }) => {
-  const productId = params.id;
+  const { id: productId } = await params;
 
   // Buscar el producto en los datos MOCK
   const product: ProductInfo | undefined = MOCK_PRODUCTS.find(p => p.id === productId);
@@ -40,11 +41,14 @@ const ProductDetailPage: React.FC<ProductPageProps> = async ({ params }) => {
         
         {/* Columna de Imagen (Izquierda) */}
         <div className="md:w-1/2 flex justify-center items-center p-4">
-          <img
+          <Image
             src={product.imageUrl}
             alt={product.name}
+            width={400}
+            height={600}
             className="w-full max-w-xs md:max-w-md h-auto object-contain transition-transform transform duration-300"
             style={{ maxHeight: '600px' }} 
+            priority
           />
         </div>
         
