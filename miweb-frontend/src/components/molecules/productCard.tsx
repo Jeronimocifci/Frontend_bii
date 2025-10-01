@@ -10,11 +10,11 @@ interface ImageCardProps {
 const ProductCard: React.FC<ImageCardProps> = ({ 
   id, 
   imageUrl, 
-  sizeClasses = 'w-[300px] h-[200px]' 
+  sizeClasses = 'w-[200px] h-[300px]' 
 }) => {
   return (
     // Usa el 'id' para construir el enlace
-    <Link href={`/product/${id}`} passHref>
+    <Link href={`/productos/${id}`} passHref>
       <div 
         className={`
           bg-white 

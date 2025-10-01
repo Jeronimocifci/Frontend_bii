@@ -23,7 +23,7 @@ const ProductsBar: React.FC<ProductsBarProps> = ({ products}) => {
             key={product.id}
             id={product.id}
             imageUrl={product.imageUrl}
-            sizeClasses="w-[250px] h-[180px]" 
+            sizeClasses="w-[200px] h-[300px]" 
           />
         ))}
       </div>

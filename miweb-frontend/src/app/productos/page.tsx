@@ -17,23 +17,28 @@ export default function ProductosPage() {
   return (
     <div className="pt-8">
       <section className="text-center text-lg mt-8 mb-12">
-        <h1 className="text-3xl font-bold text-brand mb-6">Nuestros Productos</h1>
+        <h1 className="text-3xl font-bold text-brand mb-6">Jugos</h1>
         <p className="text-neutral-dark">
-          Aquí encontrarás la variedad de jugos naturales que ofrecemos.
+          Disfruta de jugos naturales con el sabor fresco y auténtico de los hechos en casa, ¡sin el esfuerzo! 100% naturales, sin aditivos ni conservantes
         </p>
-      </section>
 
-      <ProductsBar 
-        products={jugos} 
-      />
-      
-      <p className="text-neutral-dark text-center my-8">
-        ¡Prueba nuestra deliciosa variedad de Smoothies y batidos energéticos!
-      </p>
-      
-      <ProductsBar
-        products={smoothies} 
-      />
+        <ProductsBar 
+          products={jugos} 
+        />
+        
+        <h1 className="text-3xl font-bold text-brand mb-6">Smoothies</h1>
+        <p className="text-neutral-dark text-center my-8">
+          Extractos 100% Naturales
+        </p>
+
+        <p className="text-neutral-dark text-center my-8">
+          Elaborados exclusivamente con frutas y/o verduras frescas, sin agua ni azúcares añadidos. Comienza tu día con la pureza de lo natural en cada sorbo.
+        </p>
+        
+        <ProductsBar
+          products={smoothies} 
+        />
+      </section>
       
     </div>
   );
