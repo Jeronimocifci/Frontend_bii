@@ -11,6 +11,10 @@ const inter = Inter({
 export const metadata = {
   title: "Bii Jugos",
   description: "Jugos naturales frescos y deliciosos",
+  icons: {
+    icon: '/biiLogo.jpg', 
+    shortcut: '/biiLogo.jpg',
+  },
 };
 
 // RootLayout.tsx (ejemplo)
