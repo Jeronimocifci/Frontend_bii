@@ -1,6 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Bii Jugos Naturales | Jugos y smoothies sin conservantes",
+  description: "Jugos y smoothies 100% naturales sin conservantes, colorantes ni saborizantes. Frescura y sabor real en cada sorbo. Encuéntranos en Mercasa, Pereira.",
+};
 
 export default function HomePage() {
   return (
@@ -19,10 +25,10 @@ export default function HomePage() {
         {/* Contenido sobre la imagen */}
         <div className="relative z-10 text-center text-white px-4 md:px-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-            Bienvenido a BII
+            Jugo natural, listo en segundos
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto">
-            Descubre nuestra amplia gama de productos de calidad premium
+            Sin conservantes. Sin colorantes. Sin saborizantes. Solo fruta real.
           </p>
           
           {/* Botones de acción */}
@@ -121,24 +127,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Sección adicional opcional */}
-      <section className="py-16 px-4 md:px-8 bg-gray-50">
+      {/* ¿Por qué elegir BII? */}
+      <section className="py-16 px-4 md:px-8 bg-neutral-light">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
             ¿Por qué elegir BII?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-brand mb-4">Calidad Premium</h3>
-              <p className="text-gray-600">Productos de la más alta calidad para satisfacer tus necesidades.</p>
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: '#FF8F00' }}>
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">100% Natural</h3>
+              <p className="text-neutral-mid">Sin conservantes, sin colorantes, sin saborizantes. Solo fruta real.</p>
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-brand mb-4">Experiencia</h3>
-              <p className="text-gray-600">Años de experiencia en el mercado nos respaldan.</p>
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 bg-brand">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">30 años de experiencia</h3>
+              <p className="text-neutral-mid">Más de tres décadas trabajando con las mejores frutas de Colombia.</p>
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-brand mb-4">Compromiso</h3>
-              <p className="text-gray-600">Comprometidos con la excelencia en cada producto.</p>
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: '#F9A825' }}>
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Listo en segundos</h3>
+              <p className="text-neutral-mid">Solo destápalo y disfrútalo. Sin preparación, sin complicaciones.</p>
             </div>
           </div>
         </div>

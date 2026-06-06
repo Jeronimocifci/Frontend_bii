@@ -9,20 +9,24 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: "#1B5E20",
-          light: "#66BB6A",
+          DEFAULT: "#1B5C28",
+          medium:  "#2E7D32",
+          light:   "#66BB6A",
         },
-        highlight: {
-          yellow: "#FDD835",
-          orange: "#FF9800",
+        accent: {
+          mango:    "#FF8F00",
+          citrus:   "#F9A825",
+          mora:     "#C62828",
+          maracuya: "#F06292",
         },
         neutral: {
+          dark:  "#212121",
+          mid:   "#616161",
+          light: "#F5F5F5",
           white: "#FFFFFF",
-          dark: "#212121",
         },
       },
     },
   },
   plugins: [],
 }
-

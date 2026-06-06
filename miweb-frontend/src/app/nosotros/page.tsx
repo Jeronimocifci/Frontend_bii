@@ -1,3 +1,10 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Nosotros | Bii Jugos Naturales",
+  description: "Más de 30 años trabajando con las mejores frutas. Conoce la historia de bii, nuestra misión y nuestros valores.",
+};
+
 import React from "react";
 import Image from 'next/image';
 import Link from 'next/link';

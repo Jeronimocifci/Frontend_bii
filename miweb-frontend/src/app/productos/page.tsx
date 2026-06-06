@@ -1,3 +1,10 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Productos | Bii Jugos Naturales",
+  description: "Jugos clásicos y smoothies 100% naturales. Sin agua, sin azúcar añadida, sin conservantes. Descubre todos los sabores de bii.",
+};
+
 import React from 'react';
 import ProductsBar from '../../components/organisms/productsBar'; 
 import { MOCK_PRODUCTS, ProductInfo } from '../../dataProducts'; 

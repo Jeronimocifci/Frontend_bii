@@ -1,3 +1,10 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Puntos de Venta | Bii Jugos Naturales",
+  description: "Encuentra los jugos bii en supermercados, tiendas y distribuidores de Pereira y la región.",
+};
+
 import React from 'react';
 
 export default function PuntosPage() {

@@ -1,34 +1,32 @@
 import "../styles/globals.css";
 import Navbar from "../components/navigation/navbar";
+import Footer from "../components/navigation/footer";
+import WhatsAppButton from "../components/WhatsAppButton";
 import { Inter } from "next/font/google";
 
-// Fuente Inter
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
 });
 
 export const metadata = {
-  title: "Bii Jugos",
-  description: "Jugos naturales frescos y deliciosos",
+  title: "Bii Jugos Naturales | Pereira, Colombia",
+  description: "Jugos y smoothies 100% naturales sin conservantes, colorantes ni saborizantes. Frescura y sabor real en cada sorbo. Pereira, Colombia.",
   icons: {
-    icon: '/biiLogo.jpg', 
+    icon: '/biiLogo.jpg',
     shortcut: '/biiLogo.jpg',
   },
 };
 
-// RootLayout.tsx (ejemplo)
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
       <body className={`${inter.className} min-h-screen flex flex-col bg-white`}>
         <Navbar />
         <main className="flex-1">{children}</main>
+        <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
 }
-
-
-
-

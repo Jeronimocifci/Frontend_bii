@@ -1,51 +1,53 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #1B5E20;
-  --color-brand-light: #66BB6A;
-  --color-highlight-yellow: #FDD835;
-  --color-highlight-orange: #FF9800;
-  --color-neutral-dark: #212121;
+  /* Verdes primarios (del logo) */
+  --color-brand:          #1B5C28;
+  --color-brand-medium:   #2E7D32;
+  --color-brand-light:    #66BB6A;
+
+  /* Acentos de fruta */
+  --color-accent-mango:   #FF8F00;
+  --color-accent-citrus:  #F9A825;
+  --color-accent-mora:    #C62828;
+  --color-accent-maracuya:#F06292;
+
+  /* Neutros */
+  --color-neutral-dark:   #212121;
+  --color-neutral-mid:    #616161;
+  --color-neutral-light:  #F5F5F5;
 }
 
 :root {
-  --brand-default: #1B5E20;
-  --brand-light: #66BB6A;
-  --highlight-yellow: #FDD835;
-  --highlight-orange: #FF9800;
-  --neutral-white: #FFFFFF;
-  --neutral-dark: #212121;
+  --brand-default:   #1B5C28;
+  --brand-medium:    #2E7D32;
+  --brand-light:     #66BB6A;
+  --accent-mango:    #FF8F00;
+  --accent-citrus:   #F9A825;
+  --accent-mora:     #C62828;
+  --accent-maracuya: #F06292;
+  --neutral-white:   #FFFFFF;
+  --neutral-dark:    #212121;
+  --neutral-mid:     #616161;
+  --neutral-light:   #F5F5F5;
 }
 
 body {
   font-family: sans-serif;
-}
-
-/* Clases personalizadas para colores */
-.text-brand-light {
-  color: var(--brand-light);
-}
-
-.text-brand-default {
-  color: var(--brand-default);
-}
-
-.text-neutral-dark {
   color: var(--neutral-dark);
 }
 
-.hover\:text-brand-light:hover {
-  color: var(--brand-light);
-}
+/* Clases de texto personalizadas */
+.text-brand-light   { color: var(--brand-light); }
+.text-brand-default { color: var(--brand-default); }
+.text-neutral-dark  { color: var(--neutral-dark); }
+
+.hover\:text-brand-light:hover { color: var(--brand-light); }
 
 /* Animación del carrusel */
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-scroll {
