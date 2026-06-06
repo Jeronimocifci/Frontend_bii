@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ImageCardProps {
   id: string;
@@ -7,33 +8,35 @@ interface ImageCardProps {
   sizeClasses?: string;
 }
 
-const ProductCard: React.FC<ImageCardProps> = ({ 
-  id, 
-  imageUrl, 
-  sizeClasses = 'w-[200px] h-[300px]' 
+const ProductCard: React.FC<ImageCardProps> = ({
+  id,
+  imageUrl,
+  sizeClasses = 'w-[200px] h-[300px]',
 }) => {
   return (
-    // Usa el 'id' para construir el enlace
     <Link href={`/productos/${id}`} passHref>
-      <div 
+      <div
         className={`
-          bg-white 
-          rounded-lg 
-          shadow-md 
-          cursor-pointer 
-          overflow-hidden 
-          hover:shadow-xl 
-          transition-shadow 
-          duration-300 
-          transform 
+          relative
+          bg-white
+          rounded-lg
+          shadow-md
+          cursor-pointer
+          overflow-hidden
+          hover:shadow-xl
+          transition-shadow
+          duration-300
+          transform
           hover:-translate-y-1
           ${sizeClasses}
         `}
       >
-        <img
+        <Image
           src={imageUrl}
-          alt={`Producto con ID ${id}`} 
-          className="w-full h-full object-cover" 
+          alt={`Producto con ID ${id}`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 200px, 200px"
         />
       </div>
     </Link>

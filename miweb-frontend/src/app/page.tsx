@@ -9,7 +9,7 @@ export default function HomePage() {
       <section 
         className="relative w-full h-screen flex items-center justify-center overflow-hidden"
         style={{
-          background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/inicio.png')`,
+          background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/inicio.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -91,68 +91,25 @@ export default function HomePage() {
           {/* Carrusel container */}
           <div className="relative overflow-hidden">
             <div className="flex animate-scroll space-x-8 md:space-x-12">
-              {/* Repetir las imágenes para el efecto infinito */}
               {[...Array(2)].map((_, setIndex) => (
                 <React.Fragment key={setIndex}>
-                  <div className="flex-shrink-0 w-32 h-24 md:w-40 md:h-28 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/logo_bii.png"
-                      alt="Cliente 1"
-                      width={120}
-                      height={80}
-                      className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
-                  
-                  <div className="flex-shrink-0 w-32 h-24 md:w-40 md:h-28 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/file.svg"
-                      alt="Cliente 2"
-                      width={60}
-                      height={60}
-                      className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
-                  
-                  <div className="flex-shrink-0 w-32 h-24 md:w-40 md:h-28 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/globe.svg"
-                      alt="Cliente 3"
-                      width={60}
-                      height={60}
-                      className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
-                  
-                  <div className="flex-shrink-0 w-32 h-24 md:w-40 md:h-28 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/window.svg"
-                      alt="Cliente 4"
-                      width={60}
-                      height={60}
-                      className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
-                  
-                  <div className="flex-shrink-0 w-32 h-24 md:w-40 md:h-28 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/next.svg"
-                      alt="Cliente 5"
-                      width={80}
-                      height={40}
-                      className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
-                  
-                  <div className="flex-shrink-0 w-32 h-24 md:w-40 md:h-28 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/vercel.svg"
-                      alt="Cliente 6"
-                      width={80}
-                      height={40}
-                      className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
+                  {[
+                    'Restaurante El Jardín',
+                    'Café Alma',
+                    'Gym Activa',
+                    'Hotel Plaza',
+                    'Mercasa Pereira',
+                    'Frutas & Co.',
+                  ].map((nombre) => (
+                    <div
+                      key={nombre}
+                      className="flex-shrink-0 w-36 h-24 md:w-44 md:h-28 bg-gray-100 rounded-lg flex items-center justify-center px-3"
+                    >
+                      <span className="text-sm md:text-base font-semibold text-gray-500 text-center leading-tight opacity-70 hover:opacity-100 transition-opacity duration-300">
+                        {nombre}
+                      </span>
+                    </div>
+                  ))}
                 </React.Fragment>
               ))}
             </div>

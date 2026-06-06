@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand: #1B5E20;
+  --color-brand-light: #66BB6A;
+  --color-highlight-yellow: #FDD835;
+  --color-highlight-orange: #FF9800;
+  --color-neutral-dark: #212121;
+}
+
 :root {
   --brand-default: #1B5E20;
   --brand-light: #66BB6A;
