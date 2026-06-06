@@ -1,13 +1,8 @@
 "use client";
-import React from 'react';
-import { Mail, Phone, MapPin, Instagram, LucideIcon } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
 
-interface ContactColumnProps {
-  label: string;
-  value: string;
-  icon: LucideIcon;
-  type: 'text' | 'email' | 'phone';
-}
+const WHATSAPP_NUMBER = '573137342087';
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
@@ -15,87 +10,138 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
-const ContactoPage: React.FC = () => {
+export default function ContactoPage() {
+  const [nombre, setNombre] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [mensaje, setMensaje] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = `Hola bii! 👋\n\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n*Mensaje:* ${mensaje}`;
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  };
+
   const contactInfo = [
-    { label: 'Dirección', value: 'Mercasa P1 y P2, Pereira', icon: MapPin, type: 'text' as const },
-    { label: 'Email', value: 'jugosbii.col@gmail.com', icon: Mail, type: 'email' as const },
-    { label: 'Tel', value: '+57 (300) 425-4665', icon: Phone, type: 'phone' as const },
+    { label: 'Dirección', value: 'Mercasa P1 y P2, Pereira', type: 'text' as const, icon: MapPin },
+    { label: 'Email', value: 'jugosbii.col@gmail.com', type: 'email' as const, icon: Mail },
+    { label: 'Teléfono', value: '+57 313 734 2087', type: 'phone' as const, icon: Phone },
   ];
 
-  const ContactColumn: React.FC<ContactColumnProps> = ({ label, value, type }) => (
-    <div className="flex flex-col items-start p-4">
-      <h3 className="text-xl md:text-2xl font-semibold mb-2 text-white/90">{label}</h3>
-      {type === 'email' ? (
-        <a href={`mailto:${value}`} className="text-lg text-white hover:text-white/70 transition-colors">
-          {value}
-        </a>
-      ) : type === 'phone' ? (
-        <a href={`tel:${value}`} className="text-lg text-white hover:text-white/70 transition-colors">
-          {value}
-        </a>
-      ) : (
-        <p className="text-lg text-white">{value}</p>
-      )}
-    </div>
-  );
-
   return (
-    <div className="min-h-[calc(100vh-64px)] w-full">
-      {/* Título */}
-      <div className="text-center py-12 bg-white">
-        <h1 className="text-4xl md:text-6xl font-light tracking-widest text-gray-800">
-          CONTACTO
-        </h1>
+    <div className="min-h-screen w-full">
+
+      {/* Hero */}
+      <div className="bg-brand text-white py-16 px-4 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Contáctanos</h1>
+        <p className="text-white/80 text-lg max-w-xl mx-auto">
+          Escríbenos por WhatsApp, llámanos o déjanos tu mensaje. Te respondemos rápido.
+        </p>
       </div>
 
-      {/* Fondo con gradiente de marca */}
-      <div
-        className="relative min-h-[500px] w-full"
-        style={{ background: 'linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #388E3C 100%)' }}
-      >
-        <div className="relative z-10 p-8 md:p-16">
-          <div className="flex flex-wrap justify-around gap-8 max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-16">
 
-            {contactInfo.map((item) => (
-              <ContactColumn
-                key={item.label}
-                label={item.label}
-                value={item.value}
-                icon={item.icon}
-                type={item.type}
-              />
+        {/* Info de contacto */}
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-gray-800">Información de contacto</h2>
+
+          <ul className="space-y-5">
+            {contactInfo.map(({ label, value, type, icon: Icon }) => (
+              <li key={label} className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+                  <Icon size={18} className="text-brand" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">{label}</p>
+                  {type === 'email' ? (
+                    <a href={`mailto:${value}`} className="text-gray-800 font-medium hover:text-brand transition-colors">{value}</a>
+                  ) : type === 'phone' ? (
+                    <a href={`tel:+573137342087`} className="text-gray-800 font-medium hover:text-brand transition-colors">{value}</a>
+                  ) : (
+                    <p className="text-gray-800 font-medium">{value}</p>
+                  )}
+                </div>
+              </li>
             ))}
+          </ul>
 
-            {/* Redes Sociales */}
-            <div className="flex flex-col items-start p-4">
-              <h3 className="text-xl md:text-2xl font-semibold mb-2 text-white/90">Redes</h3>
-              <div className="flex space-x-4 mt-2">
-                <a
-                  href="https://wa.me/573004254665"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 bg-white rounded-full transition-transform hover:scale-110 text-green-500"
-                  aria-label="WhatsApp"
-                >
-                  <WhatsAppIcon />
-                </a>
-                <a
-                  href="https://www.instagram.com/bii.col/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 bg-white rounded-full transition-transform hover:scale-110 text-pink-500"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={28} className="text-gray-700" />
-                </a>
-              </div>
+          {/* Redes */}
+          <div>
+            <p className="text-sm text-gray-500 mb-3">Redes sociales</p>
+            <div className="flex gap-3">
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:scale-110 transition-transform"
+              >
+                <WhatsAppIcon />
+              </a>
+              <a
+                href="https://www.instagram.com/bii.col/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 flex items-center justify-center text-white hover:scale-110 transition-transform"
+              >
+                <Instagram size={20} />
+              </a>
             </div>
-
           </div>
         </div>
+
+        {/* Formulario */}
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Envíanos un mensaje</h2>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+              <input
+                type="text"
+                required
+                value={nombre}
+                onChange={e => setNombre(e.target.value)}
+                placeholder="Tu nombre"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+              <input
+                type="tel"
+                required
+                value={telefono}
+                onChange={e => setTelefono(e.target.value)}
+                placeholder="Tu número de teléfono"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+              <textarea
+                required
+                value={mensaje}
+                onChange={e => setMensaje(e.target.value)}
+                placeholder="¿En qué te podemos ayudar?"
+                rows={4}
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition resize-none"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white font-semibold py-4 rounded-xl text-lg"
+            >
+              <WhatsAppIcon />
+              Enviar por WhatsApp
+            </button>
+            <p className="text-xs text-gray-400 text-center">
+              Al enviar, se abrirá WhatsApp con tu mensaje listo para enviar.
+            </p>
+          </form>
+        </div>
+
       </div>
     </div>
   );
-};
-
-export default ContactoPage;
+}

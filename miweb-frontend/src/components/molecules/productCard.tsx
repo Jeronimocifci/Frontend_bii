@@ -4,40 +4,28 @@ import Image from 'next/image';
 
 interface ImageCardProps {
   id: string;
+  name: string;
   imageUrl: string;
-  sizeClasses?: string;
 }
 
-const ProductCard: React.FC<ImageCardProps> = ({
-  id,
-  imageUrl,
-  sizeClasses = 'w-[200px] h-[300px]',
-}) => {
+const ProductCard: React.FC<ImageCardProps> = ({ id, name, imageUrl }) => {
   return (
     <Link href={`/productos/${id}`} passHref>
-      <div
-        className={`
-          relative
-          bg-white
-          rounded-lg
-          shadow-md
-          cursor-pointer
-          overflow-hidden
-          hover:shadow-xl
-          transition-shadow
-          duration-300
-          transform
-          hover:-translate-y-1
-          ${sizeClasses}
-        `}
-      >
-        <Image
-          src={imageUrl}
-          alt={`Producto con ID ${id}`}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 200px, 200px"
-        />
+      <div className="group w-[200px] cursor-pointer">
+        {/* Imagen */}
+        <div className="relative w-[200px] h-[300px] rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300 group-hover:-translate-y-1 transform transition-transform">
+          <Image
+            src={imageUrl}
+            alt={name}
+            fill
+            className="object-cover"
+            sizes="200px"
+          />
+        </div>
+        {/* Nombre */}
+        <p className="mt-3 text-center text-sm font-semibold text-gray-700 group-hover:text-brand transition-colors duration-200">
+          {name}
+        </p>
       </div>
     </Link>
   );

@@ -7,7 +7,7 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
-const WHATSAPP_NUMBER = "573004254665";
+const WHATSAPP_NUMBER = "573137342087";
 const WHATSAPP_MESSAGE = "Hola bii! Me gustaría conocer más sobre sus productos 🍊";
 
 export default function WhatsAppButton() {
