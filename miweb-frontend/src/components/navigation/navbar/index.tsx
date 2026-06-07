@@ -41,8 +41,8 @@ export default function Navbar() {
     <>
       <header
         ref={headerRef}
-        className="w-full bg-white shadow-md fixed top-0 left-0 z-50"
-        style={{ minHeight: "4rem" }}
+        className="w-full bg-white shadow-md fixed top-0 left-0 z-50 flex items-center"
+        style={{ minHeight: "7rem" }}
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-between">
           <Logo />
