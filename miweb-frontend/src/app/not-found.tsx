@@ -11,7 +11,7 @@ export default function NotFound() {
         </p>
 
         {/* Emoji fruta */}
-        <div className="text-6xl mb-6 -mt-4">🍊</div>
+        
 
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
           ¡Esta página no existe!

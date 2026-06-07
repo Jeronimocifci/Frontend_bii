@@ -17,7 +17,7 @@ export default function ContactoPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Hola bii! 👋\n\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n*Mensaje:* ${mensaje}`;
+    const text = `Hola bii!\n\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n*Mensaje:* ${mensaje}`;
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };

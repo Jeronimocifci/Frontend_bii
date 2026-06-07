@@ -8,7 +8,7 @@ const WhatsAppIcon = () => (
 );
 
 const WHATSAPP_NUMBER = "573137342087";
-const WHATSAPP_MESSAGE = "Hola bii! Me gustaría conocer más sobre sus productos 🍊";
+const WHATSAPP_MESSAGE = "Hola bii! Me gustaría conocer más sobre sus productos";
 
 export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);

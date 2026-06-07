@@ -31,7 +31,7 @@ const ProductDetailPage: React.FC<ProductPageProps> = async ({ params }) => {
     );
   }
 
-  const whatsappMessage = `Hola bii! Me interesa el *${product.name}* 🍊 ¿Me pueden dar más información?`;
+  const whatsappMessage = `Hola bii! Me interesa el *${product.name}* ¿Me pueden dar más información?`;
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (

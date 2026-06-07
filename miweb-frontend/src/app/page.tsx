@@ -47,36 +47,48 @@ export default function HomePage() {
       </section>
 
       {/* Imagen + texto */}
-      <section className="py-16 px-4 md:px-8 bg-white">
+      <section className="py-20 px-4 md:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-12">
+          <div className="flex flex-col md:flex-row items-center gap-16">
             <FadeIn className="md:w-1/2" direction="left">
               <Image
                 src="/inicio2.jpg"
                 alt="Jugos bii"
                 width={500}
-                height={400}
-                className="w-full h-auto rounded-lg shadow-lg"
+                height={500}
+                className="w-full h-auto rounded-2xl shadow-xl"
                 priority
               />
             </FadeIn>
-            <FadeIn className="md:w-1/2 space-y-6" direction="right" delay={100}>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                Frescura y sabor natural
+            <FadeIn className="md:w-1/2" direction="right" delay={100}>
+              <p className="text-sm font-semibold text-brand-light uppercase tracking-widest mb-3">
+                nuestra promesa
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                Fruta real.<br />Sin trucos.
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                En bii, nuestra misión es llevar la frescura y el sabor natural de la fruta recién exprimida directamente a tu paladar. Seleccionamos cuidadosamente cada ingrediente para crear jugos y extractos únicos y sin trucos que puedes disfrutar en cualquier momento, sin complicarte la vida. Lo mejor... NO usamos conservantes ni preservantes ni saborizantes ni colorantes porque creemos en la alimentación consciente y real.
+              <p className="text-gray-500 text-base leading-relaxed mb-8">
+                Más de 30 años seleccionando las mejores frutas para que tú solo tengas que destapar y disfrutar.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Tenemos opciones para todos los gustos... los jugos clásicos, bajos en azúcar, y los smoothies, sin agua ni azúcar añadidas, ideales para los que buscan opciones muy saludables. No tienes que hacerlo, sólo destápalo y ¡pruébalo! ¡Se te hará jugo la boca!
-              </p>
-              <div className="pt-4">
-                <Link href="/nosotros">
-                  <button className="bg-brand hover:bg-brand-light transition-colors duration-300 text-white px-8 py-3 rounded-lg text-lg font-semibold">
-                    Conoce más sobre nosotros
-                  </button>
-                </Link>
+
+              <div className="space-y-4 mb-8">
+                {[
+                  'Sin conservantes ni colorantes',
+                  'Sin agua añadida en los smoothies',
+                  'Listo en segundos, en cualquier momento',
+                ].map((text) => (
+                  <div key={text} className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-brand-light shrink-0" />
+                    <span className="text-gray-700 font-medium">{text}</span>
+                  </div>
+                ))}
               </div>
+
+              <Link href="/nosotros">
+                <button className="bg-brand hover:bg-brand-light transition-colors duration-300 text-white px-7 py-3 rounded-lg font-semibold">
+                  Conoce nuestra historia
+                </button>
+              </Link>
             </FadeIn>
           </div>
         </div>
@@ -105,6 +117,7 @@ export default function HomePage() {
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 50vw, 33vw"
+                      priority={i === 0}
                     />
                   </div>
                   <p className="mt-3 text-center text-sm font-semibold text-gray-700 group-hover:text-brand transition-colors duration-200">
