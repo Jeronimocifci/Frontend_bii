@@ -13,8 +13,8 @@ export const metadata = {
   title: "bii jugos naturales | Pereira, Colombia",
   description: "Jugos y smoothies 100% naturales sin conservantes, colorantes ni saborizantes. Frescura y sabor real en cada sorbo. Pereira, Colombia.",
   icons: {
-    icon: '/biiLogo.jpg',
-    shortcut: '/biiLogo.jpg',
+    icon: '/logo_bii_transparent.png',
+    shortcut: '/logo_bii_transparent.png',
   },
 };
 

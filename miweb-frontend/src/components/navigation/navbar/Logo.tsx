@@ -6,11 +6,11 @@ export default function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2">
       <Image
-        src="/logo_bii.png"
+        src="/logo_bii_transparent.png"
         alt="Logo bii"
-        width={110}
-        height={110}
-        style={{ width: '110px', height: 'auto' }}
+        width={140}
+        height={140}
+        style={{ width: '140px', height: 'auto' }}
         priority
       />
     </Link>
