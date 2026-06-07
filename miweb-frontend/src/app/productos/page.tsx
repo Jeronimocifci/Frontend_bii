@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Productos | Bii Jugos Naturales",
+  title: "Productos | bii jugos naturales",
   description: "Jugos clásicos y smoothies 100% naturales. Sin agua, sin azúcar añadida, sin conservantes. Descubre todos los sabores de bii.",
 };
 

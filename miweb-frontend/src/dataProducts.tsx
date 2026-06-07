@@ -32,13 +32,13 @@ export const MOCK_PRODUCTS: ProductInfo[] = [
   },
   {
     id: '5',
-    name: 'Smoothie Verde Energía',
+    name: 'Smoothie Verde',
     description: 'Batido de espinacas, manzana y plátano para un inicio de día potente. Rica fuente de hierro y vitaminas.',
     imageUrl: '/example/smoothie_verde.jpg',
   },
   {
     id: '6',
-    name: 'Smoothie Antiox Berry',
+    name: 'Toro Negro',
     description: 'Mezcla de fresas, arándanos y leche de almendras, ideal para el post-entreno. Alto contenido de antioxidantes.',
     imageUrl: '/example/toro_negro.jpg',
   },

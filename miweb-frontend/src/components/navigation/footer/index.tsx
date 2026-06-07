@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Image
               src="/logo_bii.png"
-              alt="Bii Jugos Naturales"
+              alt="bii jugos naturales"
               width={100}
               height={60}
               className="object-contain brightness-0 invert"
@@ -112,7 +112,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/20 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-white/50">
-          <p>© {new Date().getFullYear()} Bii Jugos Naturales. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} bii jugos naturales. Todos los derechos reservados.</p>
           <p>Pereira, Colombia</p>
         </div>
       </div>

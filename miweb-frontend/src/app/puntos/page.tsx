@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Puntos de Venta | Bii Jugos Naturales",
+  title: "Puntos de Venta | bii jugos naturales",
   description: "Encuentra los jugos bii en supermercados, tiendas y distribuidores de Pereira y la región.",
 };
 
@@ -17,7 +17,7 @@ export default function PuntosPage() {
             Puntos de Venta
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto">
-            Encuentra nuestros productos BII en los mejores establecimientos cerca de ti.
+            Encuentra nuestros productos bii en los mejores establecimientos cerca de ti.
             Estamos presentes en múltiples ubicaciones para tu conveniencia.
           </p>
         </div>
@@ -44,7 +44,7 @@ export default function PuntosPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Puntos de venta BII"
+                title="Puntos de venta bii"
               />
             </div>
           </div>

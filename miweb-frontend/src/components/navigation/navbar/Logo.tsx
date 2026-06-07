@@ -7,7 +7,7 @@ export default function Logo() {
     <Link href="/" className="flex items-center gap-2">
       <Image
         src="/logo_bii.png" // 👈 como está en /public, se accede con esta ruta
-        alt="Logo Bii"
+        alt="Logo bii"
         width={110} // ajusta tamaño
         height={110}
         priority

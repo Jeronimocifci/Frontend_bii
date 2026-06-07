@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Nosotros | Bii Jugos Naturales",
+  title: "Nosotros | bii jugos naturales",
   description: "Más de 30 años trabajando con las mejores frutas. Conoce la historia de bii, nuestra misión y nuestros valores.",
 };
 
@@ -70,7 +70,7 @@ Entendemos que, a menudo, el ritmo de vida no permite disponer del tiempo o los 
             <div className="md:w-1/2">
               <Image
                 src="/nosotros.jpg"
-                alt="Acerca de BII"
+                alt="Acerca de bii"
                 width={600}
                 height={500}
                 className="w-full h-auto rounded-lg shadow-lg"
