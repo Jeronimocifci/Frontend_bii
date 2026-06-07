@@ -1,0 +1,85 @@
+================================================================
+PENDIENTES - PÁGINA WEB BII JUGOS NATURALES
+================================================================
+Última actualización: junio 2026
+
+----------------------------------------------------------------
+YA IMPLEMENTADO
+----------------------------------------------------------------
+[x] Sistema de colores unificado (globals.css + tailwind.config.js)
+[x] Colores consistentes en todas las páginas (nosotros, puntos, contacto)
+[x] Botón flotante de WhatsApp en toda la página
+[x] Footer con logo, navegación, contacto y redes sociales
+[x] Menú hamburguesa para móvil con sidebar
+[x] Ícono real de WhatsApp en página de contacto
+[x] Fondo de contacto con gradiente de la marca (no más imagen placeholder)
+[x] Next.js Image en ProductCard (optimización de imágenes)
+[x] Carrusel de clientes con nombres representativos
+[x] Compresión de imágenes (41MB → ~1.2MB)
+[x] Hero con texto específico ("Jugo natural, listo en segundos")
+[x] SEO básico: metadata title + description por página
+[x] Página duplicada /Inicio eliminada
+[x] .gitignore actualizado (imágenes, .DS_Store, CLAUDE.md)
+
+----------------------------------------------------------------
+PENDIENTES - REQUIEREN INFO O DECISIONES
+----------------------------------------------------------------
+
+1. FORMULARIO DE CONTACTO
+   - Qué se necesita: nombre, teléfono/email, mensaje
+   - Opciones para recibir los mensajes:
+     a) Formspree (gratis hasta 50 envíos/mes) — solo agregar un email
+     b) EmailJS (gratis hasta 200/mes) — sin backend
+     c) WhatsApp directo desde el form (más sencillo)
+   - Falta decidir: ¿a qué correo o WhatsApp llegan los mensajes?
+
+2. PÁGINA DE PRODUCTO MEJORADA (/productos/[id])
+   - Actualmente solo muestra imagen y descripción genérica
+   - Se podría agregar:
+     * Ingredientes reales de cada producto
+     * Información nutricional (calorías, azúcares, vitaminas)
+     * Tamaños disponibles (250ml, 500ml, etc.)
+     * Botón "Pedir por WhatsApp" con el producto específico en el mensaje
+   - Falta: info real de cada producto
+
+3. SECCIÓN DE TESTIMONIOS / RESEÑAS
+   - Agregar reseñas reales de clientes en la página de inicio
+   - Falta: conseguir 3-5 testimonios reales con nombre y foto (opcional)
+   - Alternativa: conectar reseñas de Google Maps si tienen perfil de negocio
+
+4. GALERÍA DE CLIENTES (carrusel)
+   - Actualmente tiene nombres de ejemplo ("Café Alma", "Gym Activa", etc.)
+   - Falta: logos o nombres reales de los clientes que autorizan aparecer
+
+5. GOOGLE ANALYTICS / MÉTRICAS
+   - Para saber cuántas visitas tiene la página, qué productos ven más, etc.
+   - Requiere crear cuenta en analytics.google.com
+   - Falta: código de seguimiento (GA4 Measurement ID)
+
+6. PERFIL DE GOOGLE BUSINESS
+   - Si no tienen perfil en Google Maps, crearlo en business.google.com
+   - Permite aparecer en búsquedas locales ("jugos naturales Pereira")
+   - Gratis, y conecta con las reseñas de Google
+
+7. DOMINIO Y HOSTING EN PRODUCCIÓN
+   - Recomendado: Vercel (gratis para este tipo de página)
+   - Dominio sugerido: biijugos.co / bii.com.co / jugosbii.co
+   - Registradores recomendados: Porkbun (~$10/año), Namecheap (~$12/año)
+   - Pasos: conectar repo de GitHub a Vercel → comprar dominio → conectar en Vercel
+
+8. WHATSAPP BUSINESS
+   - Si aún no tienen WhatsApp Business, configurarlo
+   - Permite tener mensaje de bienvenida automático cuando alguien escribe
+   - El número ya está en la web: +57 300 425-4665
+
+----------------------------------------------------------------
+MEJORAS OPCIONALES (FUTURO)
+----------------------------------------------------------------
+
+- Blog / recetas con los jugos (mejora SEO a largo plazo)
+- Tienda online con pasarela de pago (Wompi, PayU — para Colombia)
+- Sistema de pedidos por WhatsApp automatizado (Chatbot)
+- Versión en inglés de la página (para turistas en Pereira)
+- Aplicación móvil (largo plazo)
+
+================================================================

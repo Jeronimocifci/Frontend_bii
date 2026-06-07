@@ -42,14 +42,14 @@ export default function Navbar() {
       <header
         ref={headerRef}
         className="w-full bg-white shadow-md fixed top-0 left-0 z-50"
-        style={{ minHeight: "5rem" }}
+        style={{ minHeight: "4rem" }}
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-between">
           <Logo />
 
           {/* Nav desktop */}
-          <nav className="hidden md:flex">
-            <ul className="flex items-center list-none m-0 p-0" style={{ gap: "1.8rem" }}>
+          <nav className="hidden md:flex h-full items-center">
+            <ul className="flex items-center list-none m-0 p-0 h-full" style={{ gap: "1.8rem" }}>
               {NAV_ITEMS.map((item) => {
                 const hrefNormalized = item.href.replace(/\/$/, "") || "/";
                 const isActive =

@@ -10,7 +10,7 @@ export default function Logo() {
         alt="Logo bii"
         width={60}
         height={60}
-        className="w-[60px] h-auto"
+        className="w-[60px] h-[60px]"
         priority
       />
     </Link>
