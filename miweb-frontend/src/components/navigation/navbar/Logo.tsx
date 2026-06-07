@@ -8,9 +8,9 @@ export default function Logo() {
       <Image
         src="/logo_bii_transparent.png"
         alt="Logo bii"
-        width={140}
-        height={140}
-        style={{ width: '140px', height: 'auto' }}
+        width={60}
+        height={60}
+        className="w-[60px] h-auto"
         priority
       />
     </Link>
