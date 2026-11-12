@@ -1,3 +1,4 @@
+import { PHONE_TEL } from "@/config/contact";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -116,7 +117,7 @@ export default function PuntosPage() {
               Contactar Ventas
             </a>
             <a
-              href="tel:+573004254665"
+              href={PHONE_TEL}
               className="border-2 border-brand hover:bg-brand hover:text-white transition-colors duration-300 text-brand px-8 py-3 rounded-lg text-lg font-semibold inline-block"
             >
               Llamar Ahora

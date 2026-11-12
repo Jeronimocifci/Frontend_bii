@@ -1,4 +1,5 @@
 "use client";
+import { whatsappUrl } from "@/config/contact";
 import React, { useState } from "react";
 
 const WhatsAppIcon = () => (
@@ -7,13 +8,12 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
-const WHATSAPP_NUMBER = "573137342087";
 const WHATSAPP_MESSAGE = "Hola bii! Me gustaría conocer más sobre sus productos";
 
 export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
 
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  const url = whatsappUrl(WHATSAPP_MESSAGE);
 
   return (
     <a

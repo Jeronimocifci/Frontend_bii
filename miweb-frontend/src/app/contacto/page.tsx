@@ -1,8 +1,8 @@
 "use client";
+import { whatsappUrl, PHONE_DISPLAY, PHONE_TEL } from "@/config/contact";
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
 
-const WHATSAPP_NUMBER = '573137342087';
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
@@ -18,14 +18,14 @@ export default function ContactoPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = `Hola bii!\n\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n*Mensaje:* ${mensaje}`;
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    const url = whatsappUrl(text);
     window.open(url, '_blank');
   };
 
   const contactInfo = [
     { label: 'Dirección', value: 'Mercasa P1 y P2, Pereira', type: 'text' as const, icon: MapPin },
     { label: 'Email', value: 'jugosbii.col@gmail.com', type: 'email' as const, icon: Mail },
-    { label: 'Teléfono', value: '+57 313 734 2087', type: 'phone' as const, icon: Phone },
+    { label: 'Teléfono', value: PHONE_DISPLAY, type: 'phone' as const, icon: Phone },
   ];
 
   return (
@@ -56,7 +56,7 @@ export default function ContactoPage() {
                   {type === 'email' ? (
                     <a href={`mailto:${value}`} className="text-gray-800 font-medium hover:text-brand transition-colors">{value}</a>
                   ) : type === 'phone' ? (
-                    <a href={`tel:+573137342087`} className="text-gray-800 font-medium hover:text-brand transition-colors">{value}</a>
+                    <a href={PHONE_TEL} className="text-gray-800 font-medium hover:text-brand transition-colors">{value}</a>
                   ) : (
                     <p className="text-gray-800 font-medium">{value}</p>
                   )}
@@ -70,7 +70,7 @@ export default function ContactoPage() {
             <p className="text-sm text-gray-500 mb-3">Redes sociales</p>
             <div className="flex gap-3">
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                href={whatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"

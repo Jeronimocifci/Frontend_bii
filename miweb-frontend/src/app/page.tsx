@@ -186,46 +186,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Carrusel de clientes */}
-      <section className="py-16 px-4 md:px-8 bg-neutral-light">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">
-              Algunos de nuestros clientes
-            </h2>
-          </FadeIn>
-          <div className="relative overflow-hidden">
-            <div className="flex animate-scroll space-x-8 md:space-x-12">
-              {[...Array(2)].map((_, setIndex) => (
-                <React.Fragment key={setIndex}>
-                  {[
-                    'Restaurante El Jardín',
-                    'Café Alma',
-                    'Gym Activa',
-                    'Hotel Plaza',
-                    'Mercasa Pereira',
-                    'Frutas & Co.',
-                  ].map((nombre) => (
-                    <div
-                      key={nombre}
-                      className="flex-shrink-0 w-36 h-24 md:w-44 md:h-28 bg-white rounded-lg flex items-center justify-center px-3 shadow-sm"
-                    >
-                      <span className="text-sm md:text-base font-semibold text-gray-500 text-center leading-tight opacity-70 hover:opacity-100 transition-opacity duration-300">
-                        {nombre}
-                      </span>
-                    </div>
-                  ))}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-          <FadeIn>
-            <p className="text-center text-gray-600 mt-8">
-              Confían en nosotros más de 100 empresas en la región
-            </p>
-          </FadeIn>
-        </div>
-      </section>
 
     </div>
   );

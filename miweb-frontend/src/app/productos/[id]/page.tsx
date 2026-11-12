@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { MOCK_PRODUCTS, ProductInfo } from '../../../dataProducts';
+import { whatsappUrl as buildWhatsappUrl } from '@/config/contact';
 
-const WHATSAPP_NUMBER = '573137342087';
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -19,20 +20,10 @@ const ProductDetailPage: React.FC<ProductPageProps> = async ({ params }) => {
   const { id: productId } = await params;
   const product: ProductInfo | undefined = MOCK_PRODUCTS.find(p => p.id === productId);
 
-  if (!product) {
-    return (
-      <div className="text-center mt-20 p-8">
-        <h1 className="text-4xl font-bold text-red-600 mb-4">Producto no encontrado</h1>
-        <p className="text-lg text-gray-700 mb-8">El producto no existe o fue removido.</p>
-        <Link href="/productos" className="text-brand hover:underline">
-          &larr; Volver a productos
-        </Link>
-      </div>
-    );
-  }
+  if (!product) notFound();
 
   const whatsappMessage = `Hola bii! Me interesa el *${product.name}* ¿Me pueden dar más información?`;
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = buildWhatsappUrl(whatsappMessage);
 
   return (
     <div className="container mx-auto px-6 py-12 min-h-[85vh] flex items-center justify-center">

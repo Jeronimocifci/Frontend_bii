@@ -70,7 +70,7 @@ PENDIENTES - REQUIEREN INFO O DECISIONES
 8. WHATSAPP BUSINESS
    - Si aún no tienen WhatsApp Business, configurarlo
    - Permite tener mensaje de bienvenida automático cuando alguien escribe
-   - El número ya está en la web: +57 300 425-4665
+   - El número ya está en la web: +57 313 734 2087 (centralizado en src/config/contact.ts)
 
 ----------------------------------------------------------------
 MEJORAS OPCIONALES (FUTURO)

@@ -1,3 +1,4 @@
+import { whatsappUrl, PHONE_TEL, PHONE_DISPLAY } from "@/config/contact";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -38,7 +39,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 pt-1">
               <a
-                href="https://wa.me/573004254665"
+                href={whatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -89,11 +90,11 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:+573004254665"
+                  href={PHONE_TEL}
                   className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
                 >
                   <Phone size={16} />
-                  +57 (300) 425-4665
+                  {PHONE_DISPLAY}
                 </a>
               </li>
               <li>
