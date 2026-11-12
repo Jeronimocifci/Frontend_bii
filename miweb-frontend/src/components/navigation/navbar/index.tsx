@@ -42,7 +42,7 @@ export default function Navbar() {
       <header
         ref={headerRef}
         className="w-full bg-white shadow-md fixed top-0 left-0 z-50 flex items-center"
-        style={{ minHeight: "7rem" }}
+        style={{ minHeight: "5rem" }}
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-between">
           <Logo />
@@ -58,8 +58,8 @@ export default function Navbar() {
                     : pathname === hrefNormalized || pathname.startsWith(hrefNormalized + "/");
 
                 const classes = [
-                  "font-bold",
-                  "text-xl",
+                  "font-semibold",
+                  "text-base",
                   "transition-colors",
                   "no-underline",
                   isActive ? "text-brand-light" : "text-neutral-dark",

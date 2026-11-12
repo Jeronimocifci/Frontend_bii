@@ -1,37 +1,41 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { formatCOP } from '../../dataProducts';
+import { formatCOP, ProductInfo } from '../../dataProducts';
 
-interface ImageCardProps {
-  id: string;
-  name: string;
-  imageUrl: string;
-  wholesalePrice: number;
+interface ProductCardProps {
+  product: ProductInfo;
+  priority?: boolean;
 }
 
-const ProductCard: React.FC<ImageCardProps> = ({ id, name, imageUrl, wholesalePrice }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, priority = false }) => {
   return (
-    <Link href={`/productos/${id}`} passHref>
-      <div className="group w-[200px] cursor-pointer">
-        {/* Imagen */}
-        <div className="relative w-[200px] h-[300px] rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300 group-hover:-translate-y-1 transform transition-transform">
+    <Link href={`/productos/${product.id}`} className="group block h-full">
+      <article className="h-full flex flex-col rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300">
+        <div className="relative w-full aspect-[4/5]" style={{ backgroundColor: product.accent }}>
           <Image
-            src={imageUrl}
-            alt={name}
+            src={product.imageUrl}
+            alt={`${product.name} – ${product.type} ${product.volumeMl} ml`}
             fill
-            className="object-cover"
-            sizes="200px"
+            className="object-contain mix-blend-multiply p-4 group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 768px) 50vw, 33vw"
+            priority={priority}
           />
+          <span className="absolute top-3 left-3 text-[11px] font-semibold bg-white/90 text-gray-700 px-2.5 py-1 rounded-full">
+            {product.volumeMl} ml
+          </span>
         </div>
-        {/* Nombre */}
-        <p className="mt-3 text-center text-sm font-semibold text-gray-700 group-hover:text-brand transition-colors duration-200">
-          {name}
-        </p>
-        <p className="text-center text-sm text-brand font-bold">
-          {formatCOP(wholesalePrice)} <span className="font-normal text-gray-500 text-xs">al por mayor</span>
-        </p>
-      </div>
+        <div className="flex-1 flex flex-col p-4">
+          <h3 className="text-base md:text-lg font-bold text-gray-900 group-hover:text-brand transition-colors">
+            {product.name}
+          </h3>
+          <p className="text-xs md:text-sm text-gray-500 mb-3 line-clamp-2">{product.type}</p>
+          <div className="mt-auto">
+            <p className="text-brand font-bold text-lg leading-tight">{formatCOP(product.wholesalePrice)}</p>
+            <p className="text-[11px] text-gray-500">por unidad, al por mayor</p>
+          </div>
+        </div>
+      </article>
     </Link>
   );
 };

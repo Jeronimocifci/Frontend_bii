@@ -2,194 +2,194 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { MOCK_PRODUCTS, formatCOP } from '../dataProducts';
+import { MOCK_PRODUCTS, JUGO_PRICE, formatCOP } from '../dataProducts';
+import ProductsBar from '../components/organisms/productsBar';
 import FadeIn from '../components/FadeIn';
+import WhatsAppIcon from '../components/WhatsAppIcon';
+import { whatsappUrl } from '@/config/contact';
 
 export const metadata: Metadata = {
-  title: "bii jugos naturales | Jugos y smoothies sin conservantes",
-  description: "Jugos y smoothies 100% naturales sin conservantes, colorantes ni saborizantes. Frescura y sabor real en cada sorbo. Encuéntranos en Mercasa, Pereira.",
+  title: "bii jugos naturales | Jugos y smoothies en Pereira",
+  description: "Néctares y smoothies bii hechos con fruta colombiana, listos para destapar. Precios al por mayor para tiendas, cafés y restaurantes. Mercasa P30, Pereira.",
 };
+
+const ORDER_URL = whatsappUrl('Hola bii! Quiero hacer un pedido.');
+const WHOLESALE_URL = whatsappUrl('Hola bii! Tengo un negocio y quiero información de precios al por mayor.');
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
-
-      {/* Hero Section */}
-      <section
-        className="relative w-full h-screen flex items-center justify-center overflow-hidden"
-        style={{
-          background: `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('/inicio.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        <div className="relative z-10 text-center text-white px-4 md:px-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-            Jugo natural, listo en segundos
-          </h1>
-          <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto">
-            Sin conservantes. Sin colorantes. Sin saborizantes. Solo fruta real.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/productos">
-              <button className="bg-brand hover:bg-brand-light transition-colors duration-300 text-white px-8 py-3 rounded-lg text-lg font-semibold">
-                Ver Productos
-              </button>
-            </Link>
-            <Link href="/nosotros">
-              <button className="border-2 border-white hover:bg-white hover:text-black transition-colors duration-300 text-white px-8 py-3 rounded-lg text-lg font-semibold">
-                Conoce más
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Imagen + texto */}
-      <section className="py-20 px-4 md:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <FadeIn className="md:w-1/2" direction="left">
-              <Image
-                src="/inicio2.jpg"
-                alt="Jugos bii"
-                width={500}
-                height={500}
-                className="w-full h-auto rounded-2xl shadow-xl"
-                priority
-              />
-            </FadeIn>
-            <FadeIn className="md:w-1/2" direction="right" delay={100}>
-              <p className="text-sm font-semibold text-brand-light uppercase tracking-widest mb-3">
-                nuestra promesa
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                Fruta real.<br />Sin trucos.
-              </h2>
-              <p className="text-gray-500 text-base leading-relaxed mb-8">
-                Más de 30 años seleccionando las mejores frutas para que tú solo tengas que destapar y disfrutar.
-              </p>
-
-              <div className="space-y-4 mb-8">
-                {[
-                  'Sin conservantes ni colorantes',
-                  'Sin agua añadida en los smoothies',
-                  'Listo en segundos, en cualquier momento',
-                ].map((text) => (
-                  <div key={text} className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-brand-light shrink-0" />
-                    <span className="text-gray-700 font-medium">{text}</span>
-                  </div>
-                ))}
-              </div>
-
-              <Link href="/nosotros">
-                <button className="bg-brand hover:bg-brand-light transition-colors duration-300 text-white px-7 py-3 rounded-lg font-semibold">
-                  Conoce nuestra historia
-                </button>
+    <div>
+      {/* Hero */}
+      <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden">
+        <Image
+          src="/inicio.jpg"
+          alt="Botellas de jugos bii"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/10" />
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-20">
+          <div className="max-w-xl text-white">
+            <p className="inline-block text-xs md:text-sm font-semibold uppercase tracking-widest bg-white/15 backdrop-blur px-3 py-1 rounded-full mb-5">
+              Hecho en Pereira 🇨🇴
+            </p>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5">
+              Jugo natural, listo en segundos
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              Fruta colombiana de verdad en una botella. Solo agítalo, destápalo y disfrútalo.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={ORDER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white px-7 py-3.5 rounded-xl text-lg font-semibold"
+              >
+                <WhatsAppIcon /> Hacer un pedido
+              </a>
+              <Link
+                href="/productos"
+                className="inline-flex items-center justify-center border-2 border-white/80 hover:bg-white hover:text-gray-900 transition-colors text-white px-7 py-3.5 rounded-xl text-lg font-semibold"
+              >
+                Ver productos
               </Link>
-            </FadeIn>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Productos destacados */}
-      <section className="py-16 px-4 md:px-8 bg-neutral-light">
+      {/* Franja de confianza */}
+      <section className="bg-brand text-white">
+        <div className="max-w-6xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm md:text-base font-medium">
+          <p>+30 años con fruta</p>
+          <p>Sin conservantes</p>
+          <p>Listo para tomar</p>
+          <p>Mercasa P30, Pereira</p>
+        </div>
+      </section>
+
+      {/* Productos */}
+      <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
-          <FadeIn className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Nuestros jugos
-            </h2>
+          <FadeIn className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Nuestros sabores</h2>
             <p className="text-lg text-gray-600">
-              100% fruta, sin trucos. Solo destápalo y disfrútalo.
+              Néctares de 350 ml y smoothies de 220 ml. Elige el tuyo.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            {MOCK_PRODUCTS.map((product, i) => (
-              <FadeIn key={product.id} delay={i * 80} direction="up">
-                <Link href={`/productos/${product.id}`} className="group block">
-                  <div className="relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300 group-hover:-translate-y-1 transform transition-transform">
-                    <Image
-                      src={product.imageUrl}
-                      alt={product.name}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 50vw, 33vw"
-                      priority={i === 0}
-                    />
-                  </div>
-                  <p className="mt-3 text-center text-sm font-semibold text-gray-700 group-hover:text-brand transition-colors duration-200">
-                    {product.name}
-                  </p>
-                  <p className="text-center text-sm text-brand font-bold">
-                    {formatCOP(product.wholesalePrice)} <span className="font-normal text-gray-500 text-xs">al por mayor</span>
-                  </p>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
+          <ProductsBar products={MOCK_PRODUCTS} priorityFirst />
 
-          <FadeIn className="text-center mt-10">
-            <Link href="/productos">
-              <button className="border-2 border-brand text-brand hover:bg-brand hover:text-white transition-colors duration-300 px-8 py-3 rounded-lg text-lg font-semibold">
-                Ver todos los productos
-              </button>
+          <div className="text-center mt-10">
+            <Link
+              href="/productos"
+              className="inline-block border-2 border-brand text-brand hover:bg-brand hover:text-white transition-colors px-8 py-3 rounded-xl font-semibold"
+            >
+              Ver detalles de cada producto
             </Link>
-          </FadeIn>
+          </div>
         </div>
       </section>
 
-      {/* ¿Por qué elegir bii? */}
-      <section className="py-16 px-4 md:px-8 bg-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
-              ¿Por qué elegir bii?
-            </h2>
+      {/* Cómo pedir */}
+      <section className="py-16 md:py-20 px-4 md:px-8 bg-neutral-light">
+        <div className="max-w-6xl mx-auto">
+          <FadeIn className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">¿Cómo pedir?</h2>
+            <p className="text-lg text-gray-600">Tres pasos, sin complicaciones.</p>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              {
-                color: '#FF8F00',
-                title: '100% Natural',
-                text: 'Sin conservantes, sin colorantes, sin saborizantes. Solo fruta real.',
-                icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
-              },
-              {
-                color: '#1B5C28',
-                title: '30 años de experiencia',
-                text: 'Más de tres décadas trabajando con las mejores frutas de Colombia.',
-                icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
-              },
-              {
-                color: '#F9A825',
-                title: 'Listo en segundos',
-                text: 'Solo destápalo y disfrútalo. Sin preparación, sin complicaciones.',
-                icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-              },
-            ].map((item, i) => (
-              <FadeIn key={item.title} delay={i * 120} direction="up">
-                <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 h-full">
-                  <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5"
-                    style={{ backgroundColor: item.color }}
-                  >
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">{item.title}</h3>
-                  <p className="text-neutral-mid">{item.text}</p>
+              { n: '1', title: 'Elige tus sabores', text: 'Mira el catálogo y decide qué jugos y smoothies quieres.' },
+              { n: '2', title: 'Escríbenos por WhatsApp', text: 'Cuéntanos qué quieres y cuántas unidades. Te confirmamos el pedido.' },
+              { n: '3', title: 'Recíbelo o recógelo', text: 'Coordinamos la entrega, o pasa por nuestro punto en Mercasa P30.' },
+            ].map((step, i) => (
+              <FadeIn key={step.n} delay={i * 100}>
+                <div className="bg-white rounded-2xl p-7 h-full shadow-sm">
+                  <span className="w-10 h-10 rounded-full bg-brand text-white font-bold flex items-center justify-center mb-4">
+                    {step.n}
+                  </span>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
+                  <p className="text-gray-600">{step.text}</p>
                 </div>
               </FadeIn>
             ))}
           </div>
+          <div className="text-center mt-10">
+            <a
+              href={ORDER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white px-8 py-3.5 rounded-xl text-lg font-semibold"
+            >
+              <WhatsAppIcon /> Pedir por WhatsApp
+            </a>
+          </div>
         </div>
       </section>
 
+      {/* Historia */}
+      <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+          <FadeIn className="md:w-1/2" direction="left">
+            <Image
+              src="/inicio2.jpg"
+              alt="Botella de jugo bii"
+              width={600}
+              height={750}
+              className="w-full h-auto rounded-2xl shadow-xl"
+            />
+          </FadeIn>
+          <FadeIn className="md:w-1/2" direction="right" delay={100}>
+            <p className="text-sm font-semibold text-brand-light uppercase tracking-widest mb-3">Nuestra historia</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+              Fruta real.<br />Sin trucos.
+            </h2>
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Llevamos más de 30 años trabajando con fruta colombiana. Creamos bii para que un buen jugo no
+              dependa de tener tiempo: lo hacemos nosotros, tú solo lo destapas.
+            </p>
+            <ul className="space-y-3 mb-8">
+              {['Sin conservantes ni colorantes', 'Smoothie Verde sin azúcar ni agua añadida', 'Listo para tomar en cualquier momento'].map((text) => (
+                <li key={text} className="flex items-center gap-3 text-gray-700 font-medium">
+                  <span className="w-2 h-2 rounded-full bg-brand-light shrink-0" />
+                  {text}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/nosotros"
+              className="inline-block bg-brand hover:bg-brand-medium transition-colors text-white px-7 py-3 rounded-xl font-semibold"
+            >
+              Conoce más de bii
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
 
+      {/* Mayoristas */}
+      <section className="px-4 md:px-8 pb-20 bg-white">
+        <div className="max-w-6xl mx-auto rounded-3xl bg-gradient-to-br from-brand to-brand-medium text-white p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="max-w-xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">¿Tienes un negocio?</h2>
+            <p className="text-lg text-white/90">
+              Tiendas, cafés, restaurantes y gimnasios: vende bii con precios al por mayor desde{' '}
+              <strong>{formatCOP(JUGO_PRICE)}</strong> por unidad.
+            </p>
+          </div>
+          <a
+            href={WHOLESALE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center gap-2 bg-white text-brand hover:bg-neutral-light transition-colors px-8 py-4 rounded-xl text-lg font-bold"
+          >
+            <WhatsAppIcon /> Quiero vender bii
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

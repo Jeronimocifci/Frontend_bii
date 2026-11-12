@@ -1,52 +1,49 @@
 import type { Metadata } from 'next';
+import React from 'react';
+import ProductsBar from '../../components/organisms/productsBar';
+import { productsByCategory, formatCOP, JUGO_PRICE, SMOOTHIE_PRICE } from '../../dataProducts';
 
 export const metadata: Metadata = {
   title: "Productos | bii jugos naturales",
-  description: "Jugos clásicos y smoothies 100% naturales. Sin agua, sin azúcar añadida, sin conservantes. Descubre todos los sabores de bii.",
-};
-
-import React from 'react';
-import ProductsBar from '../../components/organisms/productsBar'; 
-import { MOCK_PRODUCTS, ProductInfo } from '../../dataProducts'; 
-
-const filterProductsByIds = (ids: string[]): ProductInfo[] => {
-  return MOCK_PRODUCTS.filter(product => ids.includes(product.id));
+  description: "Néctares de 350 ml (mora, mango, maracuyá, 3 Soles) y smoothies de 220 ml (Smoothie Verde, Toro Negro). Precios al por mayor en Pereira.",
 };
 
 export default function ProductosPage() {
-  
-  const jugoIds = ['1', '2', '3', '4'];
-  const smoothieIds = ['5', '6'];
+  const jugos = productsByCategory('jugo');
+  const smoothies = productsByCategory('smoothie');
 
-  const jugos = filterProductsByIds(jugoIds); 
-  const smoothies = filterProductsByIds(smoothieIds);
+  return (
+    <div className="px-4 md:px-8 py-12 md:py-16">
+      <div className="max-w-6xl mx-auto">
+        <header className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Nuestros productos</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Hechos con fruta colombiana, listos para destapar. Precios por unidad al por mayor.
+          </p>
+        </header>
 
-  return (
-    <div className="pt-8">
-      <section className="text-center text-lg mt-8 mb-12">
-        <h1 className="text-3xl font-bold text-brand mb-6">Jugos</h1>
-        <p className="text-neutral-dark">
-          Disfruta de jugos naturales con el sabor fresco y auténtico de los hechos en casa, ¡sin el esfuerzo! 100% naturales, sin aditivos ni conservantes
-        </p>
+        <section className="mb-16">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2 mb-6">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand">Jugos · 350 ml</h2>
+              <p className="text-gray-600">Néctares de fruta con el sabor de lo hecho en casa.</p>
+            </div>
+            <p className="text-gray-700 font-semibold">{formatCOP(JUGO_PRICE)} c/u al por mayor</p>
+          </div>
+          <ProductsBar products={jugos} priorityFirst />
+        </section>
 
-        <ProductsBar 
-          products={jugos} 
-        />
-        
-        <h1 className="text-3xl font-bold text-brand mb-6">Smoothies</h1>
-        <p className="text-neutral-dark text-center my-8">
-          Extractos 100% Naturales
-        </p>
-
-        <p className="text-neutral-dark text-center my-8">
-          Elaborados exclusivamente con frutas y/o verduras frescas, sin agua ni azúcares añadidos. Comienza tu día con la pureza de lo natural en cada sorbo.
-        </p>
-        
-        <ProductsBar
-          products={smoothies} 
-        />
-      </section>
-      
-    </div>
-  );
+        <section>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2 mb-6">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand">Smoothies · 220 ml</h2>
+              <p className="text-gray-600">Mezclas de frutas y verduras para darle un giro a tu día.</p>
+            </div>
+            <p className="text-gray-700 font-semibold">{formatCOP(SMOOTHIE_PRICE)} c/u al por mayor</p>
+          </div>
+          <ProductsBar products={smoothies} />
+        </section>
+      </div>
+    </div>
+  );
 }

@@ -1,28 +1,21 @@
 import React from 'react';
-import ImageCard from '../molecules/productCard';
+import ProductCard from '../molecules/productCard';
 import { ProductInfo } from '../../dataProducts';
 
 interface ProductsBarProps {
   products: ProductInfo[];
+  priorityFirst?: boolean;
 }
 
-const ProductsBar: React.FC<ProductsBarProps> = ({ products }) => {
+const ProductsBar: React.FC<ProductsBarProps> = ({ products, priorityFirst = false }) => {
   if (!products || products.length === 0) return null;
 
   return (
-    <section className="py-8 px-4 md:px-8">
-      <div className="flex justify-center flex-wrap gap-8">
-        {products.map((product) => (
-          <ImageCard
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            imageUrl={product.imageUrl}
-            wholesalePrice={product.wholesalePrice}
-          />
-        ))}
-      </div>
-    </section>
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      {products.map((product, i) => (
+        <ProductCard key={product.id} product={product} priority={priorityFirst && i === 0} />
+      ))}
+    </div>
   );
 };
 
