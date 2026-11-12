@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { MOCK_PRODUCTS } from '../dataProducts';
+import { MOCK_PRODUCTS, formatCOP } from '../dataProducts';
 import FadeIn from '../components/FadeIn';
 
 export const metadata: Metadata = {
@@ -122,6 +122,9 @@ export default function HomePage() {
                   </div>
                   <p className="mt-3 text-center text-sm font-semibold text-gray-700 group-hover:text-brand transition-colors duration-200">
                     {product.name}
+                  </p>
+                  <p className="text-center text-sm text-brand font-bold">
+                    {formatCOP(product.wholesalePrice)} <span className="font-normal text-gray-500 text-xs">al por mayor</span>
                   </p>
                 </Link>
               </FadeIn>

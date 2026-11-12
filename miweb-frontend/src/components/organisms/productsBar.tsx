@@ -18,6 +18,7 @@ const ProductsBar: React.FC<ProductsBarProps> = ({ products }) => {
             id={product.id}
             name={product.name}
             imageUrl={product.imageUrl}
+            wholesalePrice={product.wholesalePrice}
           />
         ))}
       </div>

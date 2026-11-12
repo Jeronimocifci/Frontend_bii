@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { MOCK_PRODUCTS, ProductInfo } from '../../../dataProducts';
+import { MOCK_PRODUCTS, ProductInfo, formatCOP } from '../../../dataProducts';
 import { whatsappUrl as buildWhatsappUrl } from '@/config/contact';
 
 
@@ -22,7 +22,7 @@ const ProductDetailPage: React.FC<ProductPageProps> = async ({ params }) => {
 
   if (!product) notFound();
 
-  const whatsappMessage = `Hola bii! Me interesa el *${product.name}* ¿Me pueden dar más información?`;
+  const whatsappMessage = `Hola bii! Me interesa el *${product.name}* (${formatCOP(product.wholesalePrice)} al por mayor). ¿Me pueden dar más información?`;
   const whatsappUrl = buildWhatsappUrl(whatsappMessage);
 
   return (
@@ -49,6 +49,10 @@ const ProductDetailPage: React.FC<ProductPageProps> = async ({ params }) => {
           <h1 className="text-4xl lg:text-5xl font-light text-gray-900 mb-4">
             {product.name}
           </h1>
+          <p className="text-3xl font-bold text-brand mb-1">
+            {formatCOP(product.wholesalePrice)}
+          </p>
+          <p className="text-sm text-gray-500 mb-6">Precio por unidad al por mayor</p>
           <p className="text-gray-600 text-base leading-relaxed mb-8">
             {product.description}
           </p>
