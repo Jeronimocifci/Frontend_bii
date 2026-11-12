@@ -86,7 +86,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-white/70">
                 <MapPin size={16} className="mt-0.5 shrink-0" />
-                Mercasa P1 y P2, Pereira
+                Mercasa P30, Pereira
               </li>
               <li>
                 <a

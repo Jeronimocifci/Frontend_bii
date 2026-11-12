@@ -23,7 +23,7 @@ export default function ContactoPage() {
   };
 
   const contactInfo = [
-    { label: 'Dirección', value: 'Mercasa P1 y P2, Pereira', type: 'text' as const, icon: MapPin },
+    { label: 'Dirección', value: 'Mercasa P30, Pereira', type: 'text' as const, icon: MapPin },
     { label: 'Email', value: 'jugosbii.col@gmail.com', type: 'email' as const, icon: Mail },
     { label: 'Teléfono', value: PHONE_DISPLAY, type: 'phone' as const, icon: Phone },
   ];
