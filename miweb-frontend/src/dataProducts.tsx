@@ -19,7 +19,7 @@ export interface ProductInfo {
   accent: string;
   /** Ingredientes listados en la etiqueta (si los trae) */
   ingredients?: string[];
-  /** Declaraciones impresas en la etiqueta */
+  /** Sellos/declaraciones que se muestran como etiquetas en la ficha */
   labelClaims?: string[];
 }
 
@@ -39,6 +39,7 @@ export const MOCK_PRODUCTS: ProductInfo[] = [
     volumeMl: 350,
     wholesalePrice: JUGO_PRICE,
     accent: '#F3E6F1',
+    labelClaims: ['100% natural'],
   },
   {
     id: '2',
@@ -50,6 +51,7 @@ export const MOCK_PRODUCTS: ProductInfo[] = [
     volumeMl: 350,
     wholesalePrice: JUGO_PRICE,
     accent: '#FCF6D4',
+    labelClaims: ['100% natural'],
   },
   {
     id: '3',
@@ -61,6 +63,7 @@ export const MOCK_PRODUCTS: ProductInfo[] = [
     volumeMl: 350,
     wholesalePrice: JUGO_PRICE,
     accent: '#FDEFD2',
+    labelClaims: ['100% natural'],
   },
   {
     id: '4',
@@ -72,7 +75,7 @@ export const MOCK_PRODUCTS: ProductInfo[] = [
     volumeMl: 350,
     wholesalePrice: JUGO_PRICE,
     accent: '#FAF3DA',
-    labelClaims: ['22% fruta real'],
+    labelClaims: ['100% natural'],
   },
   {
     id: '5',
