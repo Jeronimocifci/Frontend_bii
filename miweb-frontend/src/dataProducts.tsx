@@ -101,7 +101,7 @@ export const MOCK_PRODUCTS: ProductInfo[] = [
     wholesalePrice: SMOOTHIE_PRICE,
     accent: '#F6E1E1',
     ingredients: ['Manzana', 'Tamarindo', 'Jengibre'],
-    labelClaims: ['Sin azúcar añadida', '100% fruta real'],
+    labelClaims: ['Sin azúcar añadida', 'Cero agua añadida', '100% fruta real'],
   },
 ];
 

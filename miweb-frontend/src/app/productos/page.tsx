@@ -37,9 +37,13 @@ export default function ProductosPage() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2 mb-6">
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-brand">Smoothies · 220 ml</h2>
-              <p className="text-gray-600">Mezclas de frutas y verduras para darle un giro a tu día.</p>
+              <p className="text-gray-600">Extractos de frutas y verduras para darle un giro a tu día.</p>
             </div>
             <p className="text-gray-700 font-semibold">{formatCOP(SMOOTHIE_PRICE)} c/u al por mayor</p>
+          </div>
+          <div className="mb-6 rounded-2xl border-l-4 border-brand bg-brand/5 p-5 md:p-6">
+            <p className="text-lg md:text-xl font-bold text-brand mb-1">Extractos 100% zumo de frutas y vegetales</p>
+            <p className="text-gray-700">Sin agua añadida y sin azúcar añadida. Solo el jugo de la fruta y la verdura.</p>
           </div>
           <ProductsBar products={smoothies} />
         </section>

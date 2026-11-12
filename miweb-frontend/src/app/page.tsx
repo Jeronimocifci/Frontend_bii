@@ -33,7 +33,7 @@ export default function HomePage() {
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-20">
           <div className="max-w-xl text-white">
             <p className="inline-block text-xs md:text-sm font-semibold uppercase tracking-widest bg-white/15 backdrop-blur px-3 py-1 rounded-full mb-5">
-              Hecho en Pereira 🇨🇴
+              Hecho en Pereira
             </p>
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5">
               Jugo natural, listo en segundos
@@ -63,11 +63,10 @@ export default function HomePage() {
 
       {/* Franja de confianza */}
       <section className="bg-brand text-white">
-        <div className="max-w-6xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm md:text-base font-medium">
+        <div className="max-w-6xl mx-auto px-6 py-5 grid grid-cols-3 gap-4 text-center text-sm md:text-base font-medium">
           <p>+30 años con fruta</p>
           <p>Sin conservantes</p>
           <p>Listo para tomar</p>
-          <p>Mercasa P30, Pereira</p>
         </div>
       </section>
 
@@ -105,7 +104,7 @@ export default function HomePage() {
             {[
               { n: '1', title: 'Elige tus sabores', text: 'Mira el catálogo y decide qué jugos y smoothies quieres.' },
               { n: '2', title: 'Escríbenos por WhatsApp', text: 'Cuéntanos qué quieres y cuántas unidades. Te confirmamos el pedido.' },
-              { n: '3', title: 'Recíbelo o recógelo', text: 'Coordinamos la entrega, o pasa por nuestro punto en Mercasa P30.' },
+              { n: '3', title: 'Recíbelo o recógelo', text: 'Coordinamos la entrega, o recógelo en nuestro punto de venta en Pereira.' },
             ].map((step, i) => (
               <FadeIn key={step.n} delay={i * 100}>
                 <div className="bg-white rounded-2xl p-7 h-full shadow-sm">

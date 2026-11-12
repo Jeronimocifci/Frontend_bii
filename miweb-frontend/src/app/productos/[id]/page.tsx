@@ -75,6 +75,13 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
             <p className="text-gray-700 text-lg leading-relaxed mb-6">{product.description}</p>
 
+            {product.category === 'smoothie' && (
+              <div className="mb-6 rounded-2xl border-l-4 border-brand bg-brand/5 p-4">
+                <p className="font-bold text-brand">Extracto 100% zumo de frutas y vegetales</p>
+                <p className="text-sm text-gray-700">Sin agua añadida y sin azúcar añadida.</p>
+              </div>
+            )}
+
             {product.labelClaims && (
               <div className="flex flex-wrap gap-2 mb-6">
                 {product.labelClaims.map((claim) => (
