@@ -15,11 +15,15 @@ export default function Analytics() {
       const link = (e.target as HTMLElement | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
       if (!link) return;
       const href = link.getAttribute("href") ?? "";
+      const gtag = (window as unknown as { gtag?: Gtag }).gtag;
+      if (!gtag) return;
+      if (href.includes("pedidos.jugosbii.com")) {
+        gtag("event", "order_portal_click", { page_path: window.location.pathname });
+        return;
+      }
       const isWhatsApp = href.includes("wa.me/");
       const isPhone = href.startsWith("tel:");
       if (!isWhatsApp && !isPhone) return;
-      const gtag = (window as unknown as { gtag?: Gtag }).gtag;
-      if (!gtag) return;
       gtag("event", CONTACT_CONVERSION_EVENT, {
         contact_method: isWhatsApp ? "whatsapp" : "telefono",
         page_path: window.location.pathname,

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 import { getNavItems } from "../navItems";
+import { ORDER_PORTAL_URL } from "@/config/contact";
 import type { Lang } from "../../../i18n/config";
 import { getDictionary } from "../../../i18n/dictionaries";
 
@@ -17,6 +18,7 @@ const WhatsAppIcon = () => (
 export default function Footer({ lang }: { lang: Lang }) {
   const t = getDictionary(lang).footer;
   const links = getNavItems(lang, "footer");
+  const orderLabel = getDictionary(lang).nav.order;
   return (
     <footer className="bg-brand text-white">
       <div className="max-w-6xl mx-auto px-6 py-12">
@@ -72,6 +74,11 @@ export default function Footer({ lang }: { lang: Lang }) {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a href={ORDER_PORTAL_URL} target="_blank" rel="noopener" className="text-white font-semibold hover:underline text-sm">
+                  {orderLabel} →
+                </a>
+              </li>
             </ul>
           </div>
 

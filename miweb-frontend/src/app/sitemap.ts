@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { PRODUCT_IDS } from '../dataProducts';
 import { LANGS, Lang, RouteKey, SITE_URL, productPath, routePath } from '../i18n/config';
 
-const PAGES: RouteKey[] = ['home', 'products', 'order', 'business', 'faq', 'about', 'whereToBuy', 'contact'];
+const PAGES: RouteKey[] = ['home', 'products', 'business', 'faq', 'about', 'whereToBuy', 'contact'];
 
 const alternates = (pathFor: (l: Lang) => string) => ({
   languages: {

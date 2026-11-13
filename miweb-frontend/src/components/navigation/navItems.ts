@@ -4,9 +4,9 @@ import { getDictionary } from "../../i18n/dictionaries";
 /** Barra superior en computador (el logo ya lleva al inicio). */
 const DESKTOP: RouteKey[] = ["products", "business", "about", "whereToBuy", "contact"];
 /** Menú lateral en celular. */
-const MOBILE: RouteKey[] = ["home", "products", "order", "business", "faq", "about", "whereToBuy", "contact"];
+const MOBILE: RouteKey[] = ["home", "products", "business", "faq", "about", "whereToBuy", "contact"];
 /** Pie de página. */
-const FOOTER: RouteKey[] = ["home", "products", "order", "business", "faq", "about", "whereToBuy", "contact"];
+const FOOTER: RouteKey[] = ["home", "products", "business", "faq", "about", "whereToBuy", "contact"];
 
 const build = (lang: Lang, keys: RouteKey[]) => {
   const t = getDictionary(lang).nav;

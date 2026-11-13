@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { getProducts, JUGO_PRICE, formatCOP, SHOW_PRICES } from '../dataProducts';
 import ProductsBar from '../components/organisms/productsBar';
 import FadeIn from '../components/FadeIn';
-import { ShoppingBag, Store } from 'lucide-react';
+import { Store } from 'lucide-react';
+import OrderPortalLink from '../components/OrderPortalLink';
 import { Lang, routePath } from '../i18n/config';
 import { getDictionary } from '../i18n/dictionaries';
 
@@ -26,12 +27,11 @@ export default function HomeView({ lang }: { lang: Lang }) {
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5">{t.heroTitle}</h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">{t.heroText}</p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                href={routePath(lang, 'order')}
-                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white px-7 py-3.5 rounded-xl text-lg font-semibold"
-              >
-                <ShoppingBag size={20} /> {t.heroOrder}
-              </Link>
+              <OrderPortalLink
+                label={t.heroOrder}
+                iconSize={20}
+                className="bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white px-7 py-3.5 rounded-xl text-lg font-semibold"
+              />
               <Link
                 href={routePath(lang, 'products')}
                 className="inline-flex items-center justify-center border-2 border-white/80 hover:bg-white hover:text-gray-900 transition-colors text-white px-7 py-3.5 rounded-xl text-lg font-semibold"
@@ -94,12 +94,17 @@ export default function HomeView({ lang }: { lang: Lang }) {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link
-              href={routePath(lang, 'order')}
-              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white px-8 py-3.5 rounded-xl text-lg font-semibold"
-            >
-              <ShoppingBag size={20} /> {t.howCta}
-            </Link>
+            <OrderPortalLink
+              label={t.howCta}
+              iconSize={20}
+              className="bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white px-8 py-3.5 rounded-xl text-lg font-semibold"
+            />
+            <p className="mt-4 text-gray-600">
+              {t.newClient}{' '}
+              <Link href={routePath(lang, 'business')} className="font-semibold text-brand hover:underline">
+                {t.newClientCta} →
+              </Link>
+            </p>
           </div>
         </div>
       </section>

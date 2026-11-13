@@ -5,6 +5,7 @@ import { Package, Leaf, Grid2x2, MessageCircle, HelpCircle } from 'lucide-react'
 import BusinessForm from '../components/business/BusinessForm';
 import ProductsBar from '../components/organisms/productsBar';
 import WhatsAppIcon from '../components/WhatsAppIcon';
+import OrderPortalLink from '../components/OrderPortalLink';
 import { getProducts } from '../dataProducts';
 import { whatsappUrl } from '@/config/contact';
 import { BUSINESS_INFO } from '@/config/business';
@@ -63,6 +64,19 @@ export default function BusinessView({ lang }: { lang: Lang }) {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
+        </div>
+      </section>
+
+      {/* Clientes actuales */}
+      <section className="bg-brand-medium/10 border-b border-brand/10">
+        <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <p className="text-gray-800">
+            <strong>{t.portalTitle}</strong> {t.portalText}
+          </p>
+          <OrderPortalLink
+            label={t.portalCta}
+            className="shrink-0 rounded-xl bg-brand hover:bg-brand-medium transition-colors text-white font-semibold px-6 py-2.5"
+          />
         </div>
       </section>
 

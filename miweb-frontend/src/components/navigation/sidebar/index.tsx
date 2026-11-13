@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import LanguageSwitcher from "../LanguageSwitcher";
+import OrderPortalLink from "../../OrderPortalLink";
 import { getNavItems, isActivePath } from "../navItems";
 import { Lang, routePath } from "../../../i18n/config";
 import { getDictionary } from "../../../i18n/dictionaries";
@@ -86,6 +87,11 @@ export default function Sidebar({ lang, isOpen, onClose }: SidebarProps) {
               );
             })}
           </ul>
+          <OrderPortalLink
+            label={t.order}
+            iconSize={20}
+            className="mt-4 w-full rounded-lg bg-[#25D366] hover:bg-[#1ebe57] text-white text-lg font-semibold px-4 py-3 transition-colors"
+          />
           <div className="mt-4 pt-4 border-t border-gray-100">
             <LanguageSwitcher lang={lang} variant="mobile" onNavigate={onClose} />
           </div>

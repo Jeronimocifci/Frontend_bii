@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import { getProducts, getProduct, formatCOP, SHOW_PRICES } from '../dataProducts';
 import ProductCard from '../components/molecules/productCard';
 import WhatsAppIcon from '../components/WhatsAppIcon';
-import AddToOrder from '../components/order/AddToOrder';
+import OrderPortalLink from '../components/OrderPortalLink';
 import { whatsappUrl } from '@/config/contact';
 import { Lang, routePath, languageAlternates } from '../i18n/config';
 import { getDictionary } from '../i18n/dictionaries';
@@ -103,9 +103,15 @@ export default function ProductDetailView({ id, lang }: { id: string; lang: Lang
               </div>
             )}
 
-            <AddToOrder id={product.id} name={product.name} lang={lang} />
+            <OrderPortalLink
+              label={t.portalCta}
+              iconSize={20}
+              className="bg-brand hover:bg-brand-medium transition-colors text-white font-semibold px-8 py-4 rounded-xl text-lg w-full md:w-auto"
+            />
+            <p className="text-sm text-gray-500 mt-2">{t.portalHelp}</p>
 
             <div className="mt-6 pt-6 border-t border-gray-100">
+              <p className="text-sm font-semibold text-gray-900 mb-1">{t.newClient}</p>
               <a
                 href={whatsappUrl(message)}
                 target="_blank"

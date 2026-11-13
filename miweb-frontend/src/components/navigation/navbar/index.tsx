@@ -6,7 +6,7 @@ import { Menu } from "lucide-react";
 import Logo from "./Logo";
 import Sidebar from "../sidebar";
 import LanguageSwitcher from "../LanguageSwitcher";
-import CartLink from "../../order/CartLink";
+import OrderPortalLink from "../../OrderPortalLink";
 import { getNavItems, isActivePath } from "../navItems";
 import { Lang, routePath } from "../../../i18n/config";
 import { getDictionary } from "../../../i18n/dictionaries";
@@ -66,13 +66,22 @@ export default function Navbar({ lang }: { lang: Lang }) {
                 );
               })}
             </ul>
-            <CartLink lang={lang} />
+            <OrderPortalLink
+              label={t.order}
+              iconSize={16}
+              className="rounded-full bg-brand text-white text-sm font-semibold px-4 py-2 hover:bg-brand-medium transition-colors"
+            />
             <LanguageSwitcher lang={lang} />
           </nav>
 
           {/* Móvil: pedido + menú */}
           <div className="md:hidden flex items-center gap-2">
-          <CartLink lang={lang} compact />
+          <OrderPortalLink
+            label={t.order}
+            iconOnly
+            iconSize={20}
+            className="rounded-full bg-brand text-white p-2.5 hover:bg-brand-medium transition-colors"
+          />
           <button
             className="p-2 rounded-md text-gray-600 hover:text-brand hover:bg-gray-100 transition-colors"
             onClick={() => setSidebarOpen(true)}
