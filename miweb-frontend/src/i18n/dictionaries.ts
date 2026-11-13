@@ -258,7 +258,7 @@ const es = {
     intro: 'Lo que más nos preguntan sobre bii. Si no encuentras tu respuesta, escríbenos.',
     order: {
       q: '¿Cómo hago un pedido?',
-      a: 'Si ya eres cliente, haz tu pedido en línea en pedidos.jugosbii.com con el NIT de tu negocio: verás tus productos con tus precios. Si aún no eres cliente, escríbenos por WhatsApp o desde la página Para negocios.',
+      a: 'Entra a pedidos.jugosbii.com con el NIT de tu empresa, escoge los sabores y las cantidades y envía el pedido. Lo revisamos y te confirmamos la entrega.',
     },
     location: { q: '¿Dónde están ubicados?', a: 'Estamos en Mercasa P30, Pereira (Risaralda), Colombia.' },
     preservatives: {
@@ -279,18 +279,33 @@ const es = {
       aWithPrices: (juice: string, smoothie: string) =>
         `Al por mayor, los jugos de 350 ml cuestan ${juice} por unidad y los smoothies de 220 ml ${smoothie} por unidad.`,
     },
-    shelfLife: { q: '¿Cuánto duran los productos?' },
-    storage: { q: '¿Hay que refrigerarlos?' },
+    shelfLife: {
+      q: '¿Cuánto duran los jugos?',
+      a: 'Hasta 3 meses desde la fecha de producción, siempre que se mantengan refrigerados. La fecha exacta de vencimiento está impresa en cada botella.',
+    },
+    storage: {
+      q: '¿Necesitan refrigeración?',
+      a: 'Sí. Los jugos deben estar refrigerados todo el tiempo, desde que los recibes hasta que se consumen.',
+    },
     delivery: {
-      q: '¿Hacen entregas a domicilio?',
+      q: '¿A dónde entregan y en cuánto tiempo?',
+      a: 'En Pereira y municipios cercanos, generalmente en 1 día hábil. En otras ciudades del Eje Cafetero, en 2 a 3 días hábiles. Los tiempos se cuentan desde que confirmamos el pedido.',
       aDefault:
         'Sí, coordinamos la entrega según tu ubicación y el tamaño del pedido. También puedes recogerlo en nuestro punto de venta en Mercasa P30, Pereira.',
     },
     minOrder: {
       q: '¿Hay un pedido mínimo?',
-      a: (n: number) => `Para precios al por mayor, el pedido mínimo es de ${n} unidades.`,
+      a: (n: number) => `Sí, ${n} unidades por pedido. Puedes combinar sabores y presentaciones.`,
     },
-    payment: { q: '¿Cómo puedo pagar?' },
+    payment: { q: '¿Cómo puedo pagar?', a: 'En efectivo o por transferencia a nuestra cuenta Bancolombia.' },
+    nitLogin: {
+      q: '¿Por qué no puedo entrar con mi NIT?',
+      a: 'La página de pedidos es solo para clientes registrados. Si todavía no eres cliente o tu NIT no aparece, escríbenos y te registramos.',
+    },
+    finalPrices: {
+      q: '¿Los precios que veo son los finales?',
+      a: 'Son los precios de tu lista vigentes hoy. El valor final queda en la factura.',
+    },
     ctaTitle: '¿No encontraste tu respuesta?',
     ctaText: 'Escríbenos por WhatsApp y te respondemos.',
     ctaButton: 'Escribir por WhatsApp',
@@ -560,7 +575,7 @@ const en: Dictionary = {
     intro: 'What people ask us most about bii. If you can’t find your answer, message us.',
     order: {
       q: 'How do I place an order?',
-      a: 'If you’re already a customer, place your order online at pedidos.jugosbii.com with your business’s NIT (tax ID): you’ll see your products with your prices. If you’re not a customer yet, message us on WhatsApp or through our For business page.',
+      a: 'Go to pedidos.jugosbii.com, sign in with your company’s NIT (tax ID), choose the flavors and quantities and send your order. We’ll review it and confirm the delivery.',
     },
     location: { q: 'Where are you located?', a: 'We’re at Mercasa P30, Pereira (Risaralda), Colombia.' },
     preservatives: {
@@ -581,18 +596,33 @@ const en: Dictionary = {
       aWithPrices: (juice: string, smoothie: string) =>
         `Wholesale, 350 ml juices are ${juice} per unit and 220 ml smoothies are ${smoothie} per unit.`,
     },
-    shelfLife: { q: 'How long do the products last?' },
-    storage: { q: 'Do they need to be refrigerated?' },
+    shelfLife: {
+      q: 'How long do the juices last?',
+      a: 'Up to 3 months from the production date, as long as they’re kept refrigerated. The exact expiration date is printed on every bottle.',
+    },
+    storage: {
+      q: 'Do they need to be refrigerated?',
+      a: 'Yes. The juices must be kept refrigerated at all times, from the moment you receive them until they’re consumed.',
+    },
     delivery: {
-      q: 'Do you deliver?',
+      q: 'Where do you deliver, and how long does it take?',
+      a: 'In Pereira and nearby towns, usually within 1 business day. In other cities in the Coffee Region, within 2 to 3 business days. Times count from when we confirm your order.',
       aDefault:
         'Yes, we arrange delivery based on your location and the size of your order. You can also pick it up at our store at Mercasa P30, Pereira.',
     },
     minOrder: {
       q: 'Is there a minimum order?',
-      a: (n: number) => `For wholesale prices, the minimum order is ${n} units.`,
+      a: (n: number) => `Yes, ${n} units per order. You can mix flavors and sizes.`,
     },
-    payment: { q: 'How can I pay?' },
+    payment: { q: 'How can I pay?', a: 'In cash or by bank transfer to our Bancolombia account.' },
+    nitLogin: {
+      q: 'Why can’t I sign in with my NIT?',
+      a: 'The ordering page is only for registered customers. If you’re not a customer yet or your NIT isn’t recognized, message us and we’ll register you.',
+    },
+    finalPrices: {
+      q: 'Are the prices I see final?',
+      a: 'They’re the prices on your current price list. The final amount is the one on your invoice.',
+    },
     ctaTitle: 'Didn’t find your answer?',
     ctaText: 'Message us on WhatsApp and we’ll get back to you.',
     ctaButton: 'Message us on WhatsApp',

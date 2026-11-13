@@ -17,9 +17,21 @@ export const BUSINESS_INFO: {
   /** Formas de pago. Ej: { es: 'Efectivo, Nequi y transferencia', en: 'Cash, Nequi and bank transfer' } */
   payment: Localized;
 } = {
-  minOrderUnits: null,
-  shelfLife: null,
-  storage: null,
-  delivery: null,
-  payment: null,
+  minOrderUnits: 25,
+  shelfLife: {
+    es: 'Hasta 3 meses refrigerados desde la producción',
+    en: 'Up to 3 months refrigerated from production',
+  },
+  storage: {
+    es: 'Siempre refrigerados, desde la entrega hasta el consumo',
+    en: 'Always refrigerated, from delivery until consumption',
+  },
+  delivery: {
+    es: 'Pereira y municipios cercanos: 1 día hábil. Resto del Eje Cafetero: 2 a 3 días hábiles',
+    en: 'Pereira and nearby towns: 1 business day. Rest of the Coffee Region: 2 to 3 business days',
+  },
+  payment: {
+    es: 'Efectivo o transferencia a Bancolombia',
+    en: 'Cash or bank transfer to Bancolombia',
+  },
 };

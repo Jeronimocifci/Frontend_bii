@@ -14,15 +14,17 @@ export function getFaqItems(lang: Lang) {
   const info = BUSINESS_INFO;
   const items: ({ q: string; a: string } | null)[] = [
     f.order,
+    info.minOrderUnits ? { q: f.minOrder.q, a: f.minOrder.a(info.minOrderUnits) } : null,
+    info.shelfLife ? f.shelfLife : null,
+    info.storage ? f.storage : null,
+    { q: f.delivery.q, a: info.delivery ? f.delivery.a : f.delivery.aDefault },
+    info.payment ? f.payment : null,
+    f.nitLogin,
+    f.finalPrices,
     f.difference,
     f.preservatives,
     f.wholesale,
     { q: f.price.q, a: SHOW_PRICES ? f.price.aWithPrices(formatCOP(JUGO_PRICE), formatCOP(SMOOTHIE_PRICE)) : f.price.a },
-    info.minOrderUnits ? { q: f.minOrder.q, a: f.minOrder.a(info.minOrderUnits) } : null,
-    { q: f.delivery.q, a: info.delivery ? info.delivery[lang] : f.delivery.aDefault },
-    info.shelfLife ? { q: f.shelfLife.q, a: info.shelfLife[lang] } : null,
-    info.storage ? { q: f.storage.q, a: info.storage[lang] } : null,
-    info.payment ? { q: f.payment.q, a: info.payment[lang] } : null,
     f.location,
   ];
   return items.filter(Boolean) as { q: string; a: string }[];
