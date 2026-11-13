@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import Navbar from "../components/navigation/navbar";
 import Footer from "../components/navigation/footer";
 import WhatsAppButton from "../components/WhatsAppButton";
+import Analytics from "../components/Analytics";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import { PHONE_DISPLAY } from "@/config/contact";
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
