@@ -275,7 +275,7 @@ const es = {
     },
     price: {
       q: '¿Cuánto cuestan?',
-      a: 'El precio depende del producto y de la cantidad. Escríbenos por WhatsApp y te enviamos la lista de precios.',
+      a: 'Si ya eres cliente, entra a pedidos.jugosbii.com con el NIT de tu empresa: ahí ves los precios de tu lista y puedes hacer el pedido. Si todavía no eres cliente, escríbenos por WhatsApp y te enviamos la lista de precios.',
       aWithPrices: (juice: string, smoothie: string) =>
         `Al por mayor, los jugos de 350 ml cuestan ${juice} por unidad y los smoothies de 220 ml ${smoothie} por unidad.`,
     },
@@ -592,7 +592,7 @@ const en: Dictionary = {
     },
     price: {
       q: 'How much do they cost?',
-      a: 'The price depends on the product and the quantity. Message us on WhatsApp and we’ll send you our price list.',
+      a: 'If you’re already a customer, log in at pedidos.jugosbii.com with your company’s NIT to see your price list and place your order. If you’re not a customer yet, message us on WhatsApp and we’ll send you our price list.',
       aWithPrices: (juice: string, smoothie: string) =>
         `Wholesale, 350 ml juices are ${juice} per unit and 220 ml smoothies are ${smoothie} per unit.`,
     },
