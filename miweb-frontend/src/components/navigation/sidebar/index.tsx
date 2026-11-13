@@ -3,23 +3,22 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
-
-const NAV_ITEMS = [
-  { label: "Inicio", href: "/" },
-  { label: "Productos", href: "/productos" },
-  { label: "Nosotros", href: "/nosotros" },
-  { label: "Puntos de venta", href: "/puntos" },
-  { label: "Contacto", href: "/contacto" },
-];
+import LanguageSwitcher from "../LanguageSwitcher";
+import { getNavItems, isActivePath } from "../navItems";
+import { Lang, routePath } from "../../../i18n/config";
+import { getDictionary } from "../../../i18n/dictionaries";
 
 interface SidebarProps {
+  lang: Lang;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function Sidebar({ isOpen, onClose }: SidebarProps) {
-  const pathnameRaw = usePathname() ?? "/";
-  const pathname = pathnameRaw.replace(/\/$/, "") || "/";
+export default function Sidebar({ lang, isOpen, onClose }: SidebarProps) {
+  const pathname = usePathname() ?? "/";
+  const items = getNavItems(lang);
+  const home = routePath(lang, "home");
+  const t = getDictionary(lang).nav;
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -31,7 +30,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   return (
@@ -52,14 +53,14 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         }`}
         role="dialog"
         aria-modal="true"
-        aria-label="Menú de navegación"
+        aria-label={t.menuLabel}
       >
         <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
           <span className="text-xl font-bold text-brand">bii</span>
           <button
             onClick={onClose}
             className="p-2 rounded-md text-gray-500 hover:text-brand hover:bg-gray-100 transition-colors"
-            aria-label="Cerrar menú"
+            aria-label={t.closeMenu}
           >
             <X size={24} />
           </button>
@@ -67,22 +68,15 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
         <nav className="px-6 py-6">
           <ul className="space-y-2">
-            {NAV_ITEMS.map((item) => {
-              const hrefNormalized = item.href.replace(/\/$/, "") || "/";
-              const isActive =
-                hrefNormalized === "/"
-                  ? pathname === "/"
-                  : pathname === hrefNormalized || pathname.startsWith(hrefNormalized + "/");
-
+            {items.map((item) => {
+              const isActive = isActivePath(pathname, item.href, home);
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     onClick={onClose}
                     className={`block px-4 py-3 rounded-lg text-lg font-semibold transition-colors ${
-                      isActive
-                        ? "bg-brand text-white"
-                        : "text-gray-700 hover:bg-gray-100 hover:text-brand"
+                      isActive ? "bg-brand text-white" : "text-gray-700 hover:bg-gray-100 hover:text-brand"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
@@ -92,6 +86,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               );
             })}
           </ul>
+          <div className="mt-4 pt-4 border-t border-gray-100">
+            <LanguageSwitcher lang={lang} variant="mobile" onNavigate={onClose} />
+          </div>
         </nav>
       </div>
     </>

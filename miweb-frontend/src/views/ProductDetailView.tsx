@@ -3,52 +3,49 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { MOCK_PRODUCTS, getProduct, formatCOP, SHOW_PRICES } from '../../../dataProducts';
-import ProductCard from '../../../components/molecules/productCard';
-import WhatsAppIcon from '../../../components/WhatsAppIcon';
+import { getProducts, getProduct, formatCOP, SHOW_PRICES } from '../dataProducts';
+import ProductCard from '../components/molecules/productCard';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 import { whatsappUrl } from '@/config/contact';
+import { Lang, routePath, languageAlternates } from '../i18n/config';
+import { getDictionary } from '../i18n/dictionaries';
 
-interface ProductPageProps {
-  params: Promise<{ id: string }>;
-}
-
-export function generateStaticParams() {
-  return MOCK_PRODUCTS.map((p) => ({ id: p.id }));
-}
-
-export const dynamicParams = false;
-
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const { id } = await params;
-  const product = getProduct(id);
+export function productMetadata(id: string, lang: Lang): Metadata {
+  const product = getProduct(id, lang);
   if (!product) return {};
+  const t = getDictionary(lang).product;
   return {
     title: `${product.name} – ${product.type} ${product.volumeMl} ml | bii`,
     description: SHOW_PRICES
-      ? `${product.description} ${formatCOP(product.wholesalePrice)} por unidad al por mayor.`
+      ? `${product.description} ${formatCOP(product.wholesalePrice)} ${t.priceSuffix}`
       : product.description,
+    alternates: languageAlternates(lang, 'products', id),
     openGraph: { images: [product.imageUrl] },
   };
 }
 
-export default async function ProductDetailPage({ params }: ProductPageProps) {
-  const { id } = await params;
-  const product = getProduct(id);
+export default function ProductDetailView({ id, lang }: { id: string; lang: Lang }) {
+  const product = getProduct(id, lang);
   if (!product) notFound();
 
+  const d = getDictionary(lang);
+  const t = d.product;
   const message = SHOW_PRICES
-    ? `Hola bii! Me interesa el *${product.name}* (${product.volumeMl} ml, ${formatCOP(product.wholesalePrice)} al por mayor). ¿Me pueden dar más información?`
-    : `Hola bii! Me interesa el *${product.name}* (${product.volumeMl} ml). ¿Me pueden dar precio y más información?`;
+    ? d.whatsapp.productWithPrice(product.name, product.volumeMl, formatCOP(product.wholesalePrice))
+    : d.whatsapp.product(product.name, product.volumeMl);
+  const all = getProducts(lang);
   const related = [
-    ...MOCK_PRODUCTS.filter((p) => p.id !== product.id && p.category === product.category),
-    ...MOCK_PRODUCTS.filter((p) => p.category !== product.category),
+    ...all.filter((p) => p.id !== product.id && p.category === product.category),
+    ...all.filter((p) => p.category !== product.category),
   ].slice(0, 3);
 
   return (
     <div className="px-4 md:px-8 py-10 md:py-14">
       <div className="max-w-6xl mx-auto">
-        <nav className="text-sm text-gray-500 mb-6" aria-label="Ruta">
-          <Link href="/productos" className="hover:text-brand">Productos</Link>
+        <nav className="text-sm text-gray-500 mb-6" aria-label={t.breadcrumbLabel}>
+          <Link href={routePath(lang, 'products')} className="hover:text-brand">
+            {t.breadcrumbProducts}
+          </Link>
           <span className="mx-2">/</span>
           <span className="text-gray-800">{product.name}</span>
         </nav>
@@ -67,7 +64,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
           <div>
             <p className="text-sm font-semibold text-brand-light uppercase tracking-wider mb-2">
-              {product.category === 'jugo' ? 'Jugo' : 'Smoothie'} · {product.volumeMl} ml
+              {product.category === 'jugo' ? t.juice : t.smoothie} · {product.volumeMl} ml
             </p>
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">{product.name}</h1>
             <p className="text-lg text-gray-500 mb-6">{product.type}</p>
@@ -75,7 +72,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             {SHOW_PRICES && (
               <div className="flex items-baseline gap-3 mb-6">
                 <span className="text-3xl font-bold text-brand">{formatCOP(product.wholesalePrice)}</span>
-                <span className="text-gray-500">por unidad, al por mayor</span>
+                <span className="text-gray-500">{t.perUnitWholesale}</span>
               </div>
             )}
 
@@ -83,8 +80,8 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
             {product.category === 'smoothie' && (
               <div className="mb-6 rounded-2xl border-l-4 border-brand bg-brand/5 p-4">
-                <p className="font-bold text-brand">Extracto 100% zumo de frutas y vegetales</p>
-                <p className="text-sm text-gray-700">Sin agua añadida y sin azúcar añadida.</p>
+                <p className="font-bold text-brand">{t.smoothieCalloutTitle}</p>
+                <p className="text-sm text-gray-700">{t.smoothieCalloutText}</p>
               </div>
             )}
 
@@ -100,7 +97,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
             {product.ingredients && (
               <div className="mb-8">
-                <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-2">Ingredientes</h2>
+                <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-2">{t.ingredients}</h2>
                 <p className="text-gray-700">{product.ingredients.join(', ')}.</p>
               </div>
             )}
@@ -111,18 +108,18 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white font-semibold px-8 py-4 rounded-xl text-lg w-full md:w-auto"
             >
-              <WhatsAppIcon /> Pedir por WhatsApp
+              <WhatsAppIcon /> {t.order}
             </a>
-            <p className="text-sm text-gray-500 mt-3">Escríbenos por WhatsApp y te damos precios, cantidades y entrega.</p>
+            <p className="text-sm text-gray-500 mt-3">{t.orderHelp}</p>
           </div>
         </div>
 
         {related.length > 0 && (
           <section className="mt-20">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">También te puede gustar</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">{t.related}</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
               {related.map((p) => (
-                <ProductCard key={p.id} product={p} />
+                <ProductCard key={p.id} product={p} lang={lang} />
               ))}
             </div>
           </section>

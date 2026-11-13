@@ -1,0 +1,393 @@
+// Todos los textos del sitio en español e inglés.
+// Para cambiar un texto, edítalo aquí en los dos idiomas.
+import type { Lang } from './config';
+
+const es = {
+  meta: {
+    siteTitle: 'bii jugos naturales | Pereira, Colombia',
+    siteDescription:
+      'Néctares y smoothies hechos con fruta colombiana, sin conservantes ni colorantes. Listos para destapar. Pereira, Colombia.',
+    ogLocale: 'es_CO',
+    homeTitle: 'bii jugos naturales | Jugos y smoothies en Pereira',
+    homeDescription:
+      'Néctares y smoothies bii hechos con fruta colombiana, listos para destapar. Precios al por mayor para tiendas, cafés y restaurantes. Mercasa P30, Pereira.',
+    productsTitle: 'Productos | bii jugos naturales',
+    productsDescription:
+      'Néctares de 350 ml (mora, mango, maracuyá, 3 Soles) y smoothies de 220 ml (Smoothie Verde, Toro Negro). Precios al por mayor en Pereira.',
+    aboutTitle: 'Nosotros | bii jugos naturales',
+    aboutDescription:
+      'Más de 30 años trabajando con las mejores frutas. Conoce la historia de bii, nuestra misión y nuestros valores.',
+    whereTitle: 'Puntos de Venta | bii jugos naturales',
+    whereDescription:
+      'Encuentra los jugos bii en supermercados, tiendas y distribuidores de Pereira y la región.',
+    contactTitle: 'Contacto | bii jugos naturales',
+    contactDescription:
+      'Escríbenos por WhatsApp, llámanos o envíanos un mensaje. bii jugos naturales, Pereira.',
+    notFoundTitle: 'Página no encontrada | bii',
+  },
+  nav: {
+    home: 'Inicio',
+    products: 'Productos',
+    about: 'Nosotros',
+    whereToBuy: 'Puntos de venta',
+    contact: 'Contacto',
+    openMenu: 'Abrir menú',
+    closeMenu: 'Cerrar menú',
+    menuLabel: 'Menú de navegación',
+    logoAlt: 'Logo bii',
+    switchTo: 'English',
+    switchToShort: 'EN',
+    switchAria: 'Ver esta página en inglés',
+  },
+  footer: {
+    brand: 'bii jugos naturales',
+    tagline: 'Jugos naturales sin conservantes, sin colorantes, sin saborizantes. Solo fruta real, lista en segundos.',
+    navigation: 'Navegación',
+    contact: 'Contacto',
+    rights: 'Todos los derechos reservados.',
+    location: 'Pereira, Colombia',
+  },
+  whatsapp: {
+    floatingMessage: 'Hola bii! Me gustaría conocer más sobre sus productos',
+    floatingTooltip: '¡Escríbenos!',
+    floatingAria: 'Contactar por WhatsApp',
+    order: 'Hola bii! Quiero hacer un pedido.',
+    wholesale: 'Hola bii! Tengo un negocio y quiero información de precios al por mayor.',
+    productWithPrice: (name: string, ml: number, price: string) =>
+      `Hola bii! Me interesa el *${name}* (${ml} ml, ${price} al por mayor). ¿Me pueden dar más información?`,
+    product: (name: string, ml: number) =>
+      `Hola bii! Me interesa el *${name}* (${ml} ml). ¿Me pueden dar precio y más información?`,
+    contactForm: (name: string, phone: string, message: string) =>
+      `Hola bii!\n\n*Nombre:* ${name}\n*Teléfono:* ${phone}\n*Mensaje:* ${message}`,
+  },
+  home: {
+    heroAlt: 'Botellas de jugos bii',
+    heroBadge: 'Hecho en Pereira',
+    heroTitle: 'Jugo natural, listo en segundos',
+    heroText: 'Fruta colombiana de verdad en una botella. Solo agítalo, destápalo y disfrútalo.',
+    heroOrder: 'Hacer un pedido',
+    heroProducts: 'Ver productos',
+    trust: ['+30 años con fruta', 'Sin conservantes', 'Listo para tomar'],
+    flavorsTitle: 'Nuestros sabores',
+    flavorsText: 'Néctares de 350 ml y smoothies de 220 ml. Elige el tuyo.',
+    flavorsCta: 'Ver detalles de cada producto',
+    howTitle: '¿Cómo pedir?',
+    howText: 'Tres pasos, sin complicaciones.',
+    steps: [
+      { title: 'Elige tus sabores', text: 'Mira el catálogo y decide qué jugos y smoothies quieres.' },
+      { title: 'Escríbenos por WhatsApp', text: 'Cuéntanos qué quieres y cuántas unidades. Te confirmamos el pedido.' },
+      { title: 'Recíbelo o recógelo', text: 'Coordinamos la entrega, o recógelo en nuestro punto de venta en Pereira.' },
+    ],
+    howCta: 'Pedir por WhatsApp',
+    storyAlt: 'Botella de jugo bii',
+    storyKicker: 'Nuestra historia',
+    storyTitle1: 'Fruta real.',
+    storyTitle2: 'Sin trucos.',
+    storyText:
+      'Llevamos más de 30 años trabajando con fruta colombiana. Creamos bii para que un buen jugo no dependa de tener tiempo: lo hacemos nosotros, tú solo lo destapas.',
+    storyBullets: [
+      'Sin conservantes ni colorantes',
+      'Smoothie Verde sin azúcar ni agua añadida',
+      'Listo para tomar en cualquier momento',
+    ],
+    storyCta: 'Conoce más de bii',
+    businessTitle: '¿Tienes un negocio?',
+    businessText: 'Tiendas, cafés, restaurantes y gimnasios: vende bii con precios especiales al por mayor',
+    businessFrom: (price: string) => ` desde ${price} por unidad`,
+    businessCta: 'Quiero vender bii',
+  },
+  products: {
+    title: 'Nuestros productos',
+    intro: 'Hechos con fruta colombiana, listos para destapar. Escríbenos por WhatsApp para precios al por mayor.',
+    juicesTitle: 'Jugos · 350 ml',
+    juicesText: 'Néctares de fruta con el sabor de lo hecho en casa.',
+    smoothiesTitle: 'Smoothies · 220 ml',
+    smoothiesText: 'Extractos de frutas y verduras para darle un giro a tu día.',
+    perUnitWholesale: 'c/u al por mayor',
+    smoothieCalloutTitle: 'Extractos 100% zumo de frutas y vegetales',
+    smoothieCalloutText: 'Sin agua añadida y sin azúcar añadida. Solo el jugo de la fruta y la verdura.',
+    cardView: 'Ver producto →',
+    cardPerUnit: 'por unidad, al por mayor',
+  },
+  product: {
+    breadcrumbLabel: 'Ruta',
+    breadcrumbProducts: 'Productos',
+    juice: 'Jugo',
+    smoothie: 'Smoothie',
+    perUnitWholesale: 'por unidad, al por mayor',
+    priceSuffix: 'por unidad al por mayor.',
+    smoothieCalloutTitle: 'Extracto 100% zumo de frutas y vegetales',
+    smoothieCalloutText: 'Sin agua añadida y sin azúcar añadida.',
+    ingredients: 'Ingredientes',
+    order: 'Pedir por WhatsApp',
+    orderHelp: 'Escríbenos por WhatsApp y te damos precios, cantidades y entrega.',
+    related: 'También te puede gustar',
+  },
+  about: {
+    title: 'Nosotros',
+    subtitle: 'Conoce nuestra historia, valores y el compromiso que nos impulsa cada día',
+    storyTitle: 'Nuestra Historia',
+    story1:
+      'Desde hace más de 30 años, nuestra familia se ha dedicado a trabajar con las mejores frutas, especialmente en la elaboración de pulpas. Nos enorgullece ofrecer a nuestros clientes la oportunidad de disfrutar de jugos de la más alta calidad.',
+    story2:
+      'Entendemos que, a menudo, el ritmo de vida no permite disponer del tiempo o los métodos adecuados para preparar un buen jugo. Por eso, creamos bii, pensando en quienes buscan una opción de alta calidad de manera sencilla y rápida.',
+    story3:
+      'Además, ofrecemos combinaciones exclusivas en nuestros extractos, que se destacan por sus sabores únicos y su contenido nutricional excepcional.',
+    valuesTitle: 'Nuestros Valores',
+    values: [
+      { name: 'Calidad', text: 'Productos premium que superan estándares internacionales' },
+      { name: 'Innovación', text: 'Desarrollo continuo y mejora de nuestros procesos' },
+      { name: 'Responsabilidad', text: 'Compromiso con el medio ambiente y la comunidad' },
+      { name: 'Integridad', text: 'Transparencia y honestidad en todas nuestras acciones' },
+    ],
+    imageAlt: 'Acerca de bii',
+    missionTitle: 'Nuestra Misión',
+    mission:
+      'Proporcionar productos de calidad excepcional que mejoren la experiencia de vida de nuestros consumidores, manteniendo siempre los más altos estándares de calidad y servicio al cliente.',
+    visionTitle: 'Nuestra Visión',
+    vision:
+      'Ser la empresa líder en nuestro sector, reconocida por la excelencia de nuestros productos, la innovación constante y nuestro compromiso con la satisfacción del cliente y la responsabilidad social.',
+    ctaTitle: '¿Quieres conocer más?',
+    ctaText: 'Estamos aquí para responder tus preguntas y brindarte la mejor experiencia',
+    ctaContact: 'Contáctanos',
+    ctaProducts: 'Ver Productos',
+  },
+  where: {
+    title: 'Puntos de Venta',
+    subtitle:
+      'Encuentra nuestros productos bii en los mejores establecimientos cerca de ti. Estamos presentes en múltiples ubicaciones para tu conveniencia.',
+    mapTitle: 'Ubicaciones de nuestros puntos de venta',
+    mapText: 'Consulta el mapa interactivo para encontrar el punto de venta más cercano a tu ubicación',
+    mapIframeTitle: 'Puntos de venta bii',
+    cards: [
+      { title: 'Supermercados', text: 'Encuentra nuestros productos en las principales cadenas de supermercados de la región.' },
+      { title: 'Tiendas de Conveniencia', text: 'Disponible en tiendas de conveniencia para un acceso rápido y fácil a nuestros productos.' },
+      { title: 'Distribuidores', text: 'Red de distribuidores mayoristas para abastecer tu negocio con nuestros productos.' },
+    ],
+    sellTitle: '¿Interesado en vender nuestros productos?',
+    sellText:
+      'Si tienes un establecimiento y te gustaría convertirte en uno de nuestros puntos de venta, contáctanos para conocer más sobre nuestro programa de distribución.',
+    sellContact: 'Contactar Ventas',
+    sellCall: 'Llamar Ahora',
+  },
+  contact: {
+    title: 'Contáctanos',
+    subtitle: 'Escríbenos por WhatsApp, llámanos o déjanos tu mensaje. Te respondemos rápido.',
+    infoTitle: 'Información de contacto',
+    address: 'Dirección',
+    email: 'Email',
+    phone: 'Teléfono',
+    social: 'Redes sociales',
+    formTitle: 'Envíanos un mensaje',
+    name: 'Nombre',
+    namePlaceholder: 'Tu nombre',
+    phonePlaceholder: 'Tu número de teléfono',
+    message: 'Mensaje',
+    messagePlaceholder: '¿En qué te podemos ayudar?',
+    send: 'Enviar por WhatsApp',
+    sendHelp: 'Al enviar, se abrirá WhatsApp con tu mensaje listo para enviar.',
+  },
+  notFound: {
+    title: '¡Esta página no existe!',
+    text: 'Parece que el jugo se derramó por aquí. La página que buscas no está disponible.',
+    home: 'Volver al inicio',
+    products: 'Ver productos',
+  },
+};
+
+export type Dictionary = typeof es;
+
+const en: Dictionary = {
+  meta: {
+    siteTitle: 'bii natural juices | Pereira, Colombia',
+    siteDescription:
+      'Nectars and smoothies made with Colombian fruit, with no preservatives or artificial colors. Ready to drink. Pereira, Colombia.',
+    ogLocale: 'en_US',
+    homeTitle: 'bii natural juices | Juices and smoothies in Pereira, Colombia',
+    homeDescription:
+      'bii nectars and smoothies made with Colombian fruit, ready to drink. Wholesale prices for stores, cafés and restaurants in Pereira, Colombia.',
+    productsTitle: 'Products | bii natural juices',
+    productsDescription:
+      '350 ml nectars (blackberry, mango, passion fruit, 3 Soles) and 220 ml smoothies (Smoothie Verde, Toro Negro). Wholesale prices in Pereira, Colombia.',
+    aboutTitle: 'About us | bii natural juices',
+    aboutDescription:
+      'Over 30 years working with the finest fruit. Learn about bii’s story, mission and values.',
+    whereTitle: 'Where to buy | bii natural juices',
+    whereDescription: 'Find bii juices at supermarkets, stores and distributors in Pereira and the surrounding region.',
+    contactTitle: 'Contact | bii natural juices',
+    contactDescription: 'Message us on WhatsApp, call us or send us a message. bii natural juices, Pereira, Colombia.',
+    notFoundTitle: 'Page not found | bii',
+  },
+  nav: {
+    home: 'Home',
+    products: 'Products',
+    about: 'About us',
+    whereToBuy: 'Where to buy',
+    contact: 'Contact',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    menuLabel: 'Navigation menu',
+    logoAlt: 'bii logo',
+    switchTo: 'Español',
+    switchToShort: 'ES',
+    switchAria: 'View this page in Spanish',
+  },
+  footer: {
+    brand: 'bii natural juices',
+    tagline: 'Natural juices with no preservatives, no artificial colors and no artificial flavors. Just real fruit, ready in seconds.',
+    navigation: 'Navigation',
+    contact: 'Contact',
+    rights: 'All rights reserved.',
+    location: 'Pereira, Colombia',
+  },
+  whatsapp: {
+    floatingMessage: 'Hi bii! I’d like to learn more about your products',
+    floatingTooltip: 'Message us!',
+    floatingAria: 'Contact us on WhatsApp',
+    order: 'Hi bii! I’d like to place an order.',
+    wholesale: 'Hi bii! I have a business and I’d like information on wholesale prices.',
+    productWithPrice: (name: string, ml: number, price: string) =>
+      `Hi bii! I’m interested in *${name}* (${ml} ml, ${price} wholesale). Could you send me more information?`,
+    product: (name: string, ml: number) =>
+      `Hi bii! I’m interested in *${name}* (${ml} ml). Could you send me the price and more information?`,
+    contactForm: (name: string, phone: string, message: string) =>
+      `Hi bii!\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Message:* ${message}`,
+  },
+  home: {
+    heroAlt: 'Bottles of bii juice',
+    heroBadge: 'Made in Pereira, Colombia',
+    heroTitle: 'Natural juice, ready in seconds',
+    heroText: 'Real Colombian fruit in a bottle. Just shake, open and enjoy.',
+    heroOrder: 'Place an order',
+    heroProducts: 'See products',
+    trust: ['30+ years with fruit', 'No preservatives', 'Ready to drink'],
+    flavorsTitle: 'Our flavors',
+    flavorsText: '350 ml nectars and 220 ml smoothies. Pick yours.',
+    flavorsCta: 'See each product in detail',
+    howTitle: 'How to order',
+    howText: 'Three simple steps.',
+    steps: [
+      { title: 'Choose your flavors', text: 'Browse the catalog and pick the juices and smoothies you want.' },
+      { title: 'Message us on WhatsApp', text: 'Tell us what you’d like and how many. We’ll confirm your order.' },
+      { title: 'Get it delivered or pick it up', text: 'We arrange delivery, or you can pick it up at our store in Pereira.' },
+    ],
+    howCta: 'Order on WhatsApp',
+    storyAlt: 'Bottle of bii juice',
+    storyKicker: 'Our story',
+    storyTitle1: 'Real fruit.',
+    storyTitle2: 'No tricks.',
+    storyText:
+      'We’ve been working with Colombian fruit for over 30 years. We created bii so a good juice doesn’t depend on having time: we make it, you just open it.',
+    storyBullets: [
+      'No preservatives or artificial colors',
+      'Smoothie Verde with no added sugar or water',
+      'Ready to drink anytime',
+    ],
+    storyCta: 'Learn more about bii',
+    businessTitle: 'Do you run a business?',
+    businessText: 'Stores, cafés, restaurants and gyms: sell bii with special wholesale prices',
+    businessFrom: (price: string) => ` starting at ${price} per unit`,
+    businessCta: 'I want to sell bii',
+  },
+  products: {
+    title: 'Our products',
+    intro: 'Made with Colombian fruit, ready to drink. Message us on WhatsApp for wholesale prices.',
+    juicesTitle: 'Juices · 350 ml',
+    juicesText: 'Fruit nectars with that homemade taste.',
+    smoothiesTitle: 'Smoothies · 220 ml',
+    smoothiesText: 'Fruit and vegetable blends to give your day a twist.',
+    perUnitWholesale: 'each, wholesale',
+    smoothieCalloutTitle: '100% fruit and vegetable juice blends',
+    smoothieCalloutText: 'No added water and no added sugar. Just the juice of the fruit and vegetables.',
+    cardView: 'View product →',
+    cardPerUnit: 'per unit, wholesale',
+  },
+  product: {
+    breadcrumbLabel: 'Breadcrumb',
+    breadcrumbProducts: 'Products',
+    juice: 'Juice',
+    smoothie: 'Smoothie',
+    perUnitWholesale: 'per unit, wholesale',
+    priceSuffix: 'per unit, wholesale.',
+    smoothieCalloutTitle: '100% fruit and vegetable juice blend',
+    smoothieCalloutText: 'No added water and no added sugar.',
+    ingredients: 'Ingredients',
+    order: 'Order on WhatsApp',
+    orderHelp: 'Message us on WhatsApp for prices, quantities and delivery.',
+    related: 'You might also like',
+  },
+  about: {
+    title: 'About us',
+    subtitle: 'Get to know our story, our values and the commitment that drives us every day',
+    storyTitle: 'Our Story',
+    story1:
+      'For over 30 years, our family has been working with the finest fruit, especially making fruit pulps. We’re proud to give our customers the chance to enjoy top-quality juices.',
+    story2:
+      'We know that today’s pace of life often leaves little time, or the right tools, to make a good juice. That’s why we created bii, for people who want a high-quality option that’s quick and easy.',
+    story3:
+      'We also offer exclusive blends in our smoothies, known for their unique flavors and exceptional nutritional content.',
+    valuesTitle: 'Our Values',
+    values: [
+      { name: 'Quality', text: 'Premium products that exceed international standards' },
+      { name: 'Innovation', text: 'Continuous development and improvement of our processes' },
+      { name: 'Responsibility', text: 'Commitment to the environment and our community' },
+      { name: 'Integrity', text: 'Transparency and honesty in everything we do' },
+    ],
+    imageAlt: 'About bii',
+    missionTitle: 'Our Mission',
+    mission:
+      'To provide products of exceptional quality that improve our consumers’ everyday lives, always upholding the highest standards of quality and customer service.',
+    visionTitle: 'Our Vision',
+    vision:
+      'To be the leading company in our industry, recognized for the excellence of our products, constant innovation and our commitment to customer satisfaction and social responsibility.',
+    ctaTitle: 'Want to know more?',
+    ctaText: 'We’re here to answer your questions and give you the best experience',
+    ctaContact: 'Contact us',
+    ctaProducts: 'See products',
+  },
+  where: {
+    title: 'Where to buy',
+    subtitle:
+      'Find bii products at the best stores near you. We’re available in several locations for your convenience.',
+    mapTitle: 'Our points of sale',
+    mapText: 'Use the interactive map to find the point of sale closest to you',
+    mapIframeTitle: 'bii points of sale',
+    cards: [
+      { title: 'Supermarkets', text: 'Find our products at the main supermarket chains in the region.' },
+      { title: 'Convenience stores', text: 'Available at convenience stores for quick and easy access to our products.' },
+      { title: 'Distributors', text: 'A network of wholesale distributors to stock your business with our products.' },
+    ],
+    sellTitle: 'Interested in selling our products?',
+    sellText:
+      'If you have a store and would like to become one of our points of sale, contact us to learn more about our distribution program.',
+    sellContact: 'Contact sales',
+    sellCall: 'Call now',
+  },
+  contact: {
+    title: 'Contact us',
+    subtitle: 'Message us on WhatsApp, give us a call or leave us a message. We reply fast.',
+    infoTitle: 'Contact information',
+    address: 'Address',
+    email: 'Email',
+    phone: 'Phone',
+    social: 'Social media',
+    formTitle: 'Send us a message',
+    name: 'Name',
+    namePlaceholder: 'Your name',
+    phonePlaceholder: 'Your phone number',
+    message: 'Message',
+    messagePlaceholder: 'How can we help you?',
+    send: 'Send on WhatsApp',
+    sendHelp: 'When you send it, WhatsApp will open with your message ready to go.',
+  },
+  notFound: {
+    title: 'This page doesn’t exist!',
+    text: 'Looks like the juice spilled over here. The page you’re looking for isn’t available.',
+    home: 'Back to home',
+    products: 'See products',
+  },
+};
+
+const dictionaries: Record<Lang, Dictionary> = { es, en };
+
+export const getDictionary = (lang: Lang): Dictionary => dictionaries[lang];

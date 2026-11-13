@@ -2,15 +2,19 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { formatCOP, ProductInfo, SHOW_PRICES } from '../../dataProducts';
+import { Lang, productPath } from '../../i18n/config';
+import { getDictionary } from '../../i18n/dictionaries';
 
 interface ProductCardProps {
   product: ProductInfo;
+  lang: Lang;
   priority?: boolean;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, priority = false }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, lang, priority = false }) => {
+  const t = getDictionary(lang).products;
   return (
-    <Link href={`/productos/${product.id}`} className="group block h-full">
+    <Link href={productPath(lang, product.id)} className="group block h-full">
       <article className="h-full flex flex-col rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300">
         <div className="relative w-full aspect-[4/5]" style={{ backgroundColor: product.accent }}>
           <Image
@@ -34,10 +38,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, priority = false }) 
             {SHOW_PRICES ? (
               <>
                 <p className="text-brand font-bold text-lg leading-tight">{formatCOP(product.wholesalePrice)}</p>
-                <p className="text-[11px] text-gray-500">por unidad, al por mayor</p>
+                <p className="text-[11px] text-gray-500">{t.cardPerUnit}</p>
               </>
             ) : (
-              <p className="text-sm font-semibold text-brand">Ver producto →</p>
+              <p className="text-sm font-semibold text-brand">{t.cardView}</p>
             )}
           </div>
         </div>

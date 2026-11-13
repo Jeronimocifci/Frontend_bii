@@ -5,18 +5,16 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import Logo from "./Logo";
 import Sidebar from "../sidebar";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { getNavItems, isActivePath } from "../navItems";
+import { Lang, routePath } from "../../../i18n/config";
+import { getDictionary } from "../../../i18n/dictionaries";
 
-const NAV_ITEMS = [
-  { label: "Inicio", href: "/" },
-  { label: "Productos", href: "/productos" },
-  { label: "Nosotros", href: "/nosotros" },
-  { label: "Puntos de venta", href: "/puntos" },
-  { label: "Contacto", href: "/contacto" },
-];
-
-export default function Navbar() {
-  const pathnameRaw = usePathname() ?? "/";
-  const pathname = pathnameRaw.replace(/\/$/, "") || "/";
+export default function Navbar({ lang }: { lang: Lang }) {
+  const pathname = usePathname() ?? "/";
+  const items = getNavItems(lang);
+  const home = routePath(lang, "home");
+  const t = getDictionary(lang).nav;
 
   const headerRef = useRef<HTMLElement | null>(null);
   const [height, setHeight] = useState<number>(0);
@@ -45,43 +43,36 @@ export default function Navbar() {
         style={{ minHeight: "5rem" }}
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-between">
-          <Logo />
+          <Logo href={home} alt={t.logoAlt} />
 
           {/* Nav desktop */}
-          <nav className="hidden md:flex h-full items-center">
+          <nav className="hidden md:flex h-full items-center gap-6">
             <ul className="flex items-center list-none m-0 p-0 h-full" style={{ gap: "1.8rem" }}>
-              {NAV_ITEMS.map((item) => {
-                const hrefNormalized = item.href.replace(/\/$/, "") || "/";
-                const isActive =
-                  hrefNormalized === "/"
-                    ? pathname === "/"
-                    : pathname === hrefNormalized || pathname.startsWith(hrefNormalized + "/");
-
-                const classes = [
-                  "font-semibold",
-                  "text-base",
-                  "transition-colors",
-                  "no-underline",
-                  isActive ? "text-brand-light" : "text-neutral-dark",
-                  "hover:text-brand-light",
-                ].join(" ");
-
+              {items.map((item) => {
+                const isActive = isActivePath(pathname, item.href, home);
                 return (
                   <li key={item.href}>
-                    <Link href={item.href} className={classes} aria-current={isActive ? "page" : undefined}>
+                    <Link
+                      href={item.href}
+                      className={`font-semibold text-base transition-colors no-underline hover:text-brand-light ${
+                        isActive ? "text-brand-light" : "text-neutral-dark"
+                      }`}
+                      aria-current={isActive ? "page" : undefined}
+                    >
                       {item.label}
                     </Link>
                   </li>
                 );
               })}
             </ul>
+            <LanguageSwitcher lang={lang} />
           </nav>
 
           {/* Botón hamburguesa móvil */}
           <button
             className="md:hidden p-2 rounded-md text-gray-600 hover:text-brand hover:bg-gray-100 transition-colors"
             onClick={() => setSidebarOpen(true)}
-            aria-label="Abrir menú"
+            aria-label={t.openMenu}
           >
             <Menu size={28} />
           </button>
@@ -92,7 +83,7 @@ export default function Navbar() {
       <div aria-hidden style={{ height }} />
 
       {/* Sidebar móvil */}
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <Sidebar lang={lang} isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
     </>
   );
 }

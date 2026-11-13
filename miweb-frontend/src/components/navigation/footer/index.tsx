@@ -3,14 +3,10 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, Instagram } from "lucide-react";
+import { getNavItems } from "../navItems";
+import type { Lang } from "../../../i18n/config";
+import { getDictionary } from "../../../i18n/dictionaries";
 
-const NAV_LINKS = [
-  { label: "Inicio", href: "/" },
-  { label: "Productos", href: "/productos" },
-  { label: "Nosotros", href: "/nosotros" },
-  { label: "Puntos de venta", href: "/puntos" },
-  { label: "Contacto", href: "/contacto" },
-];
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -18,7 +14,9 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
-export default function Footer() {
+export default function Footer({ lang }: { lang: Lang }) {
+  const t = getDictionary(lang).footer;
+  const links = getNavItems(lang);
   return (
     <footer className="bg-brand text-white">
       <div className="max-w-6xl mx-auto px-6 py-12">
@@ -28,14 +26,13 @@ export default function Footer() {
           <div className="space-y-4">
             <Image
               src="/logo_bii.png"
-              alt="bii jugos naturales"
+              alt={t.brand}
               width={100}
               height={60}
               className="object-contain brightness-0 invert"
             />
             <p className="text-white/80 text-sm leading-relaxed">
-              Jugos naturales sin conservantes, sin colorantes, sin saborizantes.
-              Solo fruta real, lista en segundos.
+              {t.tagline}
             </p>
             <div className="flex gap-3 pt-1">
               <a
@@ -62,10 +59,10 @@ export default function Footer() {
           {/* Navegación */}
           <div>
             <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">
-              Navegación
+              {t.navigation}
             </h3>
             <ul className="space-y-2">
-              {NAV_LINKS.map((link) => (
+              {links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -81,7 +78,7 @@ export default function Footer() {
           {/* Contacto */}
           <div>
             <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">
-              Contacto
+              {t.contact}
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-white/70">
@@ -113,8 +110,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/20 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-white/50">
-          <p>© {new Date().getFullYear()} bii jugos naturales. Todos los derechos reservados.</p>
-          <p>Pereira, Colombia</p>
+          <p>© {new Date().getFullYear()} {t.brand}. {t.rights}</p>
+          <p>{t.location}</p>
         </div>
       </div>
     </footer>

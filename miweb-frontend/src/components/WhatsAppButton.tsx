@@ -1,6 +1,8 @@
 "use client";
 import { whatsappUrl } from "@/config/contact";
 import React, { useState } from "react";
+import type { Lang } from "../i18n/config";
+import { getDictionary } from "../i18n/dictionaries";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
@@ -8,39 +10,38 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
-const WHATSAPP_MESSAGE = "Hola bii! Me gustaría conocer más sobre sus productos";
-
-export default function WhatsAppButton() {
+export default function WhatsAppButton({ lang }: { lang: Lang }) {
+  const t = getDictionary(lang).whatsapp;
   const [hovered, setHovered] = useState(false);
 
-  const url = whatsappUrl(WHATSAPP_MESSAGE);
+  const url = whatsappUrl(t.floatingMessage);
 
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Contactar por WhatsApp"
+      aria-label={t.floatingAria}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 shadow-lg transition-all duration-300"
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 transition-all duration-300"
       style={{ textDecoration: "none" }}
     >
       {/* Tooltip */}
       <span
-        className="bg-white text-gray-800 text-sm font-medium px-3 py-2 rounded-lg shadow-md whitespace-nowrap transition-all duration-300"
+        className="bg-white text-gray-800 text-sm font-medium px-3 py-2 rounded-lg shadow-md whitespace-nowrap transition-all duration-300 hidden md:block"
         style={{
           opacity: hovered ? 1 : 0,
           transform: hovered ? "translateX(0)" : "translateX(8px)",
           pointerEvents: "none",
         }}
       >
-        ¡Escríbenos!
+        {t.floatingTooltip}
       </span>
 
       {/* Botón */}
       <div
-        className="w-14 h-14 rounded-full flex items-center justify-center text-white transition-transform duration-200 hover:scale-110"
+        className="w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg transition-transform duration-200 hover:scale-110"
         style={{ backgroundColor: "#25D366" }}
       >
         <WhatsAppIcon />
