@@ -1,11 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import WhatsAppIcon from '../components/WhatsAppIcon';
+import OrderPortalLink from '../components/OrderPortalLink';
 import { whatsappUrl } from '@/config/contact';
 import { BUSINESS_INFO } from '@/config/business';
 import { formatCOP, JUGO_PRICE, SMOOTHIE_PRICE, SHOW_PRICES } from '../dataProducts';
-import { Lang, routePath } from '../i18n/config';
+import { Lang } from '../i18n/config';
 import { getDictionary } from '../i18n/dictionaries';
 
 /** Preguntas visibles: las que dependen de datos sin llenar (config/business.ts) se ocultan. */
@@ -69,20 +69,18 @@ export default function FaqView({ lang }: { lang: Lang }) {
           <h2 className="text-2xl font-bold mb-2">{f.ctaTitle}</h2>
           <p className="text-white/90 mb-6">{f.ctaText}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <OrderPortalLink
+              label={d.nav.order}
+              className="bg-white text-brand hover:bg-white/90 transition-colors px-7 py-3 rounded-xl font-semibold shadow-sm"
+            />
             <a
               href={whatsappUrl(f.whatsappMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] transition-colors px-7 py-3 rounded-xl font-semibold"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/80 hover:bg-white hover:text-brand transition-colors px-7 py-3 rounded-xl font-semibold"
             >
               <WhatsAppIcon /> {f.ctaButton}
             </a>
-            <Link
-              href={routePath(lang, 'business')}
-              className="inline-flex items-center justify-center border-2 border-white/80 hover:bg-white hover:text-brand transition-colors px-7 py-3 rounded-xl font-semibold"
-            >
-              {d.nav.business}
-            </Link>
           </div>
         </div>
       </div>

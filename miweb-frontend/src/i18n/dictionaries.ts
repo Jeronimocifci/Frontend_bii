@@ -308,7 +308,7 @@ const es = {
     },
     ctaTitle: '¿No encontraste tu respuesta?',
     ctaText: 'Escríbenos por WhatsApp y te respondemos.',
-    ctaButton: 'Escribir por WhatsApp',
+    ctaButton: 'Escríbenos por WhatsApp',
     whatsappMessage: 'Hola bii! Tengo una pregunta:',
   },
   notFound: {
