@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { MOCK_PRODUCTS, getProduct, formatCOP } from '../../../dataProducts';
+import { MOCK_PRODUCTS, getProduct, formatCOP, SHOW_PRICES } from '../../../dataProducts';
 import ProductCard from '../../../components/molecules/productCard';
 import WhatsAppIcon from '../../../components/WhatsAppIcon';
 import { whatsappUrl } from '@/config/contact';
@@ -24,7 +24,9 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   if (!product) return {};
   return {
     title: `${product.name} – ${product.type} ${product.volumeMl} ml | bii`,
-    description: `${product.description} ${formatCOP(product.wholesalePrice)} por unidad al por mayor.`,
+    description: SHOW_PRICES
+      ? `${product.description} ${formatCOP(product.wholesalePrice)} por unidad al por mayor.`
+      : product.description,
     openGraph: { images: [product.imageUrl] },
   };
 }
@@ -34,7 +36,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   const product = getProduct(id);
   if (!product) notFound();
 
-  const message = `Hola bii! Me interesa el *${product.name}* (${product.volumeMl} ml, ${formatCOP(product.wholesalePrice)} al por mayor). ¿Me pueden dar más información?`;
+  const message = SHOW_PRICES
+    ? `Hola bii! Me interesa el *${product.name}* (${product.volumeMl} ml, ${formatCOP(product.wholesalePrice)} al por mayor). ¿Me pueden dar más información?`
+    : `Hola bii! Me interesa el *${product.name}* (${product.volumeMl} ml). ¿Me pueden dar precio y más información?`;
   const related = [
     ...MOCK_PRODUCTS.filter((p) => p.id !== product.id && p.category === product.category),
     ...MOCK_PRODUCTS.filter((p) => p.category !== product.category),
@@ -68,10 +72,12 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">{product.name}</h1>
             <p className="text-lg text-gray-500 mb-6">{product.type}</p>
 
-            <div className="flex items-baseline gap-3 mb-6">
-              <span className="text-3xl font-bold text-brand">{formatCOP(product.wholesalePrice)}</span>
-              <span className="text-gray-500">por unidad, al por mayor</span>
-            </div>
+            {SHOW_PRICES && (
+              <div className="flex items-baseline gap-3 mb-6">
+                <span className="text-3xl font-bold text-brand">{formatCOP(product.wholesalePrice)}</span>
+                <span className="text-gray-500">por unidad, al por mayor</span>
+              </div>
+            )}
 
             <p className="text-gray-700 text-lg leading-relaxed mb-6">{product.description}</p>
 
@@ -107,7 +113,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             >
               <WhatsAppIcon /> Pedir por WhatsApp
             </a>
-            <p className="text-sm text-gray-500 mt-3">Te respondemos por WhatsApp para confirmar cantidades y entrega.</p>
+            <p className="text-sm text-gray-500 mt-3">Escríbenos por WhatsApp y te damos precios, cantidades y entrega.</p>
           </div>
         </div>
 

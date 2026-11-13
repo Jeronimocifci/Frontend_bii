@@ -23,6 +23,9 @@ export interface ProductInfo {
   labelClaims?: string[];
 }
 
+/** Cambiar a true para volver a mostrar los precios en la página */
+export const SHOW_PRICES = false;
+
 export const JUGO_PRICE = 5400;
 export const SMOOTHIE_PRICE = 6500;
 

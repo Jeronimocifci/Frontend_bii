@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import ProductsBar from '../../components/organisms/productsBar';
-import { productsByCategory, formatCOP, JUGO_PRICE, SMOOTHIE_PRICE } from '../../dataProducts';
+import { productsByCategory, formatCOP, JUGO_PRICE, SMOOTHIE_PRICE, SHOW_PRICES } from '../../dataProducts';
 
 export const metadata: Metadata = {
   title: "Productos | bii jugos naturales",
@@ -18,7 +18,7 @@ export default function ProductosPage() {
         <header className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Nuestros productos</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Hechos con fruta colombiana, listos para destapar. Precios por unidad al por mayor.
+            Hechos con fruta colombiana, listos para destapar. Escríbenos por WhatsApp para precios al por mayor.
           </p>
         </header>
 
@@ -28,7 +28,7 @@ export default function ProductosPage() {
               <h2 className="text-2xl md:text-3xl font-bold text-brand">Jugos · 350 ml</h2>
               <p className="text-gray-600">Néctares de fruta con el sabor de lo hecho en casa.</p>
             </div>
-            <p className="text-gray-700 font-semibold">{formatCOP(JUGO_PRICE)} c/u al por mayor</p>
+            {SHOW_PRICES && <p className="text-gray-700 font-semibold">{formatCOP(JUGO_PRICE)} c/u al por mayor</p>}
           </div>
           <ProductsBar products={jugos} priorityFirst />
         </section>
@@ -39,7 +39,7 @@ export default function ProductosPage() {
               <h2 className="text-2xl md:text-3xl font-bold text-brand">Smoothies · 220 ml</h2>
               <p className="text-gray-600">Extractos de frutas y verduras para darle un giro a tu día.</p>
             </div>
-            <p className="text-gray-700 font-semibold">{formatCOP(SMOOTHIE_PRICE)} c/u al por mayor</p>
+            {SHOW_PRICES && <p className="text-gray-700 font-semibold">{formatCOP(SMOOTHIE_PRICE)} c/u al por mayor</p>}
           </div>
           <div className="mb-6 rounded-2xl border-l-4 border-brand bg-brand/5 p-5 md:p-6">
             <p className="text-lg md:text-xl font-bold text-brand mb-1">Extractos 100% zumo de frutas y vegetales</p>

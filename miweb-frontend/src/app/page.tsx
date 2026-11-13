@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { MOCK_PRODUCTS, JUGO_PRICE, formatCOP } from '../dataProducts';
+import { MOCK_PRODUCTS, JUGO_PRICE, formatCOP, SHOW_PRICES } from '../dataProducts';
 import ProductsBar from '../components/organisms/productsBar';
 import FadeIn from '../components/FadeIn';
 import WhatsAppIcon from '../components/WhatsAppIcon';
@@ -175,8 +175,13 @@ export default function HomePage() {
           <div className="max-w-xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-3">¿Tienes un negocio?</h2>
             <p className="text-lg text-white/90">
-              Tiendas, cafés, restaurantes y gimnasios: vende bii con precios al por mayor desde{' '}
-              <strong>{formatCOP(JUGO_PRICE)}</strong> por unidad.
+              Tiendas, cafés, restaurantes y gimnasios: vende bii con precios especiales al por mayor
+              {SHOW_PRICES && (
+                <>
+                  {' '}desde <strong>{formatCOP(JUGO_PRICE)}</strong> por unidad
+                </>
+              )}
+              .
             </p>
           </div>
           <a

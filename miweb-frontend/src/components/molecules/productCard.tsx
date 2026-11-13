@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { formatCOP, ProductInfo } from '../../dataProducts';
+import { formatCOP, ProductInfo, SHOW_PRICES } from '../../dataProducts';
 
 interface ProductCardProps {
   product: ProductInfo;
@@ -31,8 +31,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, priority = false }) 
           </h3>
           <p className="text-xs md:text-sm text-gray-500 mb-3 line-clamp-2">{product.type}</p>
           <div className="mt-auto">
-            <p className="text-brand font-bold text-lg leading-tight">{formatCOP(product.wholesalePrice)}</p>
-            <p className="text-[11px] text-gray-500">por unidad, al por mayor</p>
+            {SHOW_PRICES ? (
+              <>
+                <p className="text-brand font-bold text-lg leading-tight">{formatCOP(product.wholesalePrice)}</p>
+                <p className="text-[11px] text-gray-500">por unidad, al por mayor</p>
+              </>
+            ) : (
+              <p className="text-sm font-semibold text-brand">Ver producto →</p>
+            )}
           </div>
         </div>
       </article>
