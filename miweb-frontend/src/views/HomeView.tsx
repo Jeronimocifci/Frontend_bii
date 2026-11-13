@@ -4,16 +4,13 @@ import Image from 'next/image';
 import { getProducts, JUGO_PRICE, formatCOP, SHOW_PRICES } from '../dataProducts';
 import ProductsBar from '../components/organisms/productsBar';
 import FadeIn from '../components/FadeIn';
-import WhatsAppIcon from '../components/WhatsAppIcon';
-import { whatsappUrl } from '@/config/contact';
+import { ShoppingBag, Store } from 'lucide-react';
 import { Lang, routePath } from '../i18n/config';
 import { getDictionary } from '../i18n/dictionaries';
 
 export default function HomeView({ lang }: { lang: Lang }) {
   const d = getDictionary(lang);
   const t = d.home;
-  const orderUrl = whatsappUrl(d.whatsapp.order);
-  const wholesaleUrl = whatsappUrl(d.whatsapp.wholesale);
 
   return (
     <div>
@@ -29,14 +26,12 @@ export default function HomeView({ lang }: { lang: Lang }) {
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5">{t.heroTitle}</h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">{t.heroText}</p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href={orderUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={routePath(lang, 'order')}
                 className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white px-7 py-3.5 rounded-xl text-lg font-semibold"
               >
-                <WhatsAppIcon /> {t.heroOrder}
-              </a>
+                <ShoppingBag size={20} /> {t.heroOrder}
+              </Link>
               <Link
                 href={routePath(lang, 'products')}
                 className="inline-flex items-center justify-center border-2 border-white/80 hover:bg-white hover:text-gray-900 transition-colors text-white px-7 py-3.5 rounded-xl text-lg font-semibold"
@@ -99,20 +94,18 @@ export default function HomeView({ lang }: { lang: Lang }) {
             ))}
           </div>
           <div className="text-center mt-10">
-            <a
-              href={orderUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={routePath(lang, 'order')}
               className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white px-8 py-3.5 rounded-xl text-lg font-semibold"
             >
-              <WhatsAppIcon /> {t.howCta}
-            </a>
+              <ShoppingBag size={20} /> {t.howCta}
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Historia */}
-      <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
+      <section className="py-16 md:py-20 px-4 md:px-8 bg-white overflow-x-clip">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <FadeIn className="md:w-1/2" direction="left">
             <Image
@@ -159,14 +152,12 @@ export default function HomeView({ lang }: { lang: Lang }) {
               {SHOW_PRICES && t.businessFrom(formatCOP(JUGO_PRICE))}.
             </p>
           </div>
-          <a
-            href={wholesaleUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={routePath(lang, 'business')}
             className="shrink-0 inline-flex items-center gap-2 bg-white text-brand hover:bg-neutral-light transition-colors px-8 py-4 rounded-xl text-lg font-bold"
           >
-            <WhatsAppIcon /> {t.businessCta}
-          </a>
+            <Store size={20} /> {t.businessCta}
+          </Link>
         </div>
       </section>
     </div>

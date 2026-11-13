@@ -1,12 +1,20 @@
 import { Lang, RouteKey, routePath } from "../../i18n/config";
 import { getDictionary } from "../../i18n/dictionaries";
 
-const KEYS: RouteKey[] = ["home", "products", "about", "whereToBuy", "contact"];
+/** Barra superior en computador (el logo ya lleva al inicio). */
+const DESKTOP: RouteKey[] = ["products", "business", "about", "whereToBuy", "contact"];
+/** Menú lateral en celular. */
+const MOBILE: RouteKey[] = ["home", "products", "order", "business", "faq", "about", "whereToBuy", "contact"];
+/** Pie de página. */
+const FOOTER: RouteKey[] = ["home", "products", "order", "business", "faq", "about", "whereToBuy", "contact"];
 
-export const getNavItems = (lang: Lang) => {
+const build = (lang: Lang, keys: RouteKey[]) => {
   const t = getDictionary(lang).nav;
-  return KEYS.map((key) => ({ label: t[key], href: routePath(lang, key) }));
+  return keys.map((key) => ({ key, label: t[key], href: routePath(lang, key) }));
 };
+
+export const getNavItems = (lang: Lang, place: "desktop" | "mobile" | "footer" = "desktop") =>
+  build(lang, place === "desktop" ? DESKTOP : place === "mobile" ? MOBILE : FOOTER);
 
 const normalize = (p: string) => p.replace(/\/$/, "") || "/";
 

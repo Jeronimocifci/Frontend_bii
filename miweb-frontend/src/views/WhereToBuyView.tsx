@@ -72,7 +72,7 @@ export default function WhereToBuyView({ lang }: { lang: Lang }) {
           <p className="text-lg text-gray-600 mb-8">{t.sellText}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href={routePath(lang, 'contact')}
+              href={routePath(lang, 'business')}
               className="bg-brand hover:bg-brand-light transition-colors duration-300 text-white px-8 py-3 rounded-lg text-lg font-semibold inline-block"
             >
               {t.sellContact}

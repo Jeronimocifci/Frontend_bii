@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
 import { whatsappUrl, PHONE_DISPLAY, PHONE_TEL } from '@/config/contact';
 import WhatsAppIcon from '../components/WhatsAppIcon';
+import { openLink } from '../lib/openLink';
 import type { Lang } from '../i18n/config';
 import { getDictionary } from '../i18n/dictionaries';
 
@@ -18,7 +19,7 @@ export default function ContactView({ lang }: { lang: Lang }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.open(whatsappUrl(d.whatsapp.contactForm(name, phone, message)), '_blank');
+    openLink(whatsappUrl(d.whatsapp.contactForm(name, phone, message)));
   };
 
   const contactInfo = [

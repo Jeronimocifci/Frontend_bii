@@ -16,7 +16,7 @@ interface SidebarProps {
 
 export default function Sidebar({ lang, isOpen, onClose }: SidebarProps) {
   const pathname = usePathname() ?? "/";
-  const items = getNavItems(lang);
+  const items = getNavItems(lang, "mobile");
   const home = routePath(lang, "home");
   const t = getDictionary(lang).nav;
 

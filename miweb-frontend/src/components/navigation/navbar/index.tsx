@@ -6,6 +6,7 @@ import { Menu } from "lucide-react";
 import Logo from "./Logo";
 import Sidebar from "../sidebar";
 import LanguageSwitcher from "../LanguageSwitcher";
+import CartLink from "../../order/CartLink";
 import { getNavItems, isActivePath } from "../navItems";
 import { Lang, routePath } from "../../../i18n/config";
 import { getDictionary } from "../../../i18n/dictionaries";
@@ -47,7 +48,7 @@ export default function Navbar({ lang }: { lang: Lang }) {
 
           {/* Nav desktop */}
           <nav className="hidden md:flex h-full items-center gap-6">
-            <ul className="flex items-center list-none m-0 p-0 h-full" style={{ gap: "1.8rem" }}>
+            <ul className="flex items-center list-none m-0 p-0 h-full" style={{ gap: "1.5rem" }}>
               {items.map((item) => {
                 const isActive = isActivePath(pathname, item.href, home);
                 return (
@@ -65,17 +66,21 @@ export default function Navbar({ lang }: { lang: Lang }) {
                 );
               })}
             </ul>
+            <CartLink lang={lang} />
             <LanguageSwitcher lang={lang} />
           </nav>
 
-          {/* Botón hamburguesa móvil */}
+          {/* Móvil: pedido + menú */}
+          <div className="md:hidden flex items-center gap-2">
+          <CartLink lang={lang} compact />
           <button
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-brand hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-md text-gray-600 hover:text-brand hover:bg-gray-100 transition-colors"
             onClick={() => setSidebarOpen(true)}
             aria-label={t.openMenu}
           >
             <Menu size={28} />
           </button>
+          </div>
         </div>
       </header>
 

@@ -16,7 +16,7 @@ const WhatsAppIcon = () => (
 
 export default function Footer({ lang }: { lang: Lang }) {
   const t = getDictionary(lang).footer;
-  const links = getNavItems(lang);
+  const links = getNavItems(lang, "footer");
   return (
     <footer className="bg-brand text-white">
       <div className="max-w-6xl mx-auto px-6 py-12">

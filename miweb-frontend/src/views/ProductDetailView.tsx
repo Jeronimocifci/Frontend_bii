@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { getProducts, getProduct, formatCOP, SHOW_PRICES } from '../dataProducts';
 import ProductCard from '../components/molecules/productCard';
 import WhatsAppIcon from '../components/WhatsAppIcon';
+import AddToOrder from '../components/order/AddToOrder';
 import { whatsappUrl } from '@/config/contact';
 import { Lang, routePath, languageAlternates } from '../i18n/config';
 import { getDictionary } from '../i18n/dictionaries';
@@ -102,15 +103,19 @@ export default function ProductDetailView({ id, lang }: { id: string; lang: Lang
               </div>
             )}
 
-            <a
-              href={whatsappUrl(message)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1ebe57] transition-colors text-white font-semibold px-8 py-4 rounded-xl text-lg w-full md:w-auto"
-            >
-              <WhatsAppIcon /> {t.order}
-            </a>
-            <p className="text-sm text-gray-500 mt-3">{t.orderHelp}</p>
+            <AddToOrder id={product.id} name={product.name} lang={lang} />
+
+            <div className="mt-6 pt-6 border-t border-gray-100">
+              <a
+                href={whatsappUrl(message)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-semibold text-[#128C4A] hover:underline"
+              >
+                <WhatsAppIcon /> {t.order}
+              </a>
+              <p className="text-sm text-gray-500 mt-1">{t.orderHelp}</p>
+            </div>
           </div>
         </div>
 

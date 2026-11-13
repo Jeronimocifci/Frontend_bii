@@ -6,12 +6,15 @@ export const LANGS: Lang[] = ['es', 'en'];
 export const DEFAULT_LANG: Lang = 'es';
 export const SITE_URL = 'https://www.jugosbii.com';
 
-export type RouteKey = 'home' | 'products' | 'about' | 'whereToBuy' | 'contact';
+export type RouteKey = 'home' | 'products' | 'order' | 'business' | 'faq' | 'about' | 'whereToBuy' | 'contact';
 
 const ROUTES: Record<Lang, Record<RouteKey, string>> = {
   es: {
     home: '/',
     products: '/productos',
+    order: '/pedido',
+    business: '/negocios',
+    faq: '/preguntas-frecuentes',
     about: '/nosotros',
     whereToBuy: '/puntos',
     contact: '/contacto',
@@ -19,6 +22,9 @@ const ROUTES: Record<Lang, Record<RouteKey, string>> = {
   en: {
     home: '/en',
     products: '/en/products',
+    order: '/en/order',
+    business: '/en/for-business',
+    faq: '/en/faq',
     about: '/en/about',
     whereToBuy: '/en/where-to-buy',
     contact: '/en/contact',
